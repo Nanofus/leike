@@ -6,6 +6,7 @@ var mainWindow = null;
 
 var Menu = require('menu');
 var Tray = require('tray');
+var appIcon = null;
 
 app.on('window-all-closed', function () {
     //if (process.platform != 'darwin')
@@ -32,4 +33,7 @@ app.on('ready', function () {
     ]);
     appIcon.setToolTip('leike');
     appIcon.setContextMenu(contextMenu);
+    appIcon.addListener('clicked', function () {
+        mainWindow.show();
+    });
 });
