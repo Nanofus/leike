@@ -1,5 +1,5 @@
 <h3>Main view</h3>
 
-<ul ng-repeat="item in items">
+<ul ng-repeat="item in items track by $index">
   <li>{{item}}</li>
 </ul>

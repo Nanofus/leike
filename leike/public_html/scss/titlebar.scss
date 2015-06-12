@@ -20,6 +20,11 @@ body {
         height: 30px;
         transition: background-color 0.25s ease-out;
         -webkit-app-region: no-drag;
+        
+        background-color: #C0C0C0;
+        &:hover {
+            background-color: #E0E0E0;
+        }
     }
 
     #close {
@@ -33,15 +38,5 @@ body {
 
     #minimize {
         background-image: url("../images/titlebar/minimize.png");
-        background-color: #C0C0C0;
-        &:hover {
-            background-color: #E0E0E0;
-        }
-    }
-    #maximize {
-        background-color: #C0C0C0;
-        &:hover {
-            background-color: #E0E0E0;
-        }
     }
 }
