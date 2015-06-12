@@ -1,4 +1,4 @@
-electronTemplate.controller('TitlebarController', ['$scope', '$interval', function ($scope, $interval) {
+leike.controller('TitlebarController', ['$scope', '$interval', function ($scope, $interval) {
         var remote = require('remote');
 
         var maximizeMode = "maximize";

@@ -8,6 +8,7 @@
         <script type="text/javascript" src="app/jquery-loader.js"></script>
         <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="bower_components/angularjs/angular.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
 
         <script type="text/javascript" src="app/app.js"></script>
         <script type="text/javascript" src="app/controllers/titlebar_controller.js"></script>
@@ -16,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="css/titlebar.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
-    <body ng-controller="MainController">
+    <body>
         <div id="titlebar" ng-controller="TitlebarController"> 
             <div id="window-buttons">
                 <div class="window-button" id="close" ng-click="closeWindow()"></div>
@@ -25,7 +26,7 @@
             </div>
         </div>
         <div id="content">
-            <h1>Hello World!</h1>
+            <div ng-view></div>
         </div>
     </body>
 </html>
