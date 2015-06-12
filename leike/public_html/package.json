@@ -1,0 +1,9 @@
+{
+  "name": "leike",
+  "version": "0.1.0",
+  "main": "main.js",
+  "devDependencies": {
+    "electron-prebuilt": "^0.27.3",
+    "gulp": "^3.9.0"
+  }
+}

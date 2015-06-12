@@ -1,0 +1,36 @@
+body {
+  margin: 0px;
+  padding: 0px; }
+
+#content {
+  margin: 8px; }
+
+#titlebar {
+  height: 40px;
+  width: 100%;
+  background-color: #cccccc;
+  -webkit-app-region: drag; }
+  #titlebar .window-button {
+    float: right;
+    margin: 5px 2.5px;
+    width: 30px;
+    height: 30px;
+    transition: background-color 0.25s ease-out;
+    -webkit-app-region: no-drag; }
+  #titlebar #close {
+    background-image: url("../images/titlebar/close.png");
+    background-color: #B5001E;
+    margin-right: 5px; }
+    #titlebar #close:hover {
+      background-color: #DD2846; }
+  #titlebar #minimize {
+    background-image: url("../images/titlebar/minimize.png");
+    background-color: #C0C0C0; }
+    #titlebar #minimize:hover {
+      background-color: #E0E0E0; }
+  #titlebar #maximize {
+    background-color: #C0C0C0; }
+    #titlebar #maximize:hover {
+      background-color: #E0E0E0; }
+
+/*# sourceMappingURL=titlebar.css.map */

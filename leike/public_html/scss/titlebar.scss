@@ -1,0 +1,47 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#content {
+    margin: 8px;
+}
+
+#titlebar {
+    height: 40px;
+    width: 100%;
+    background-color: #cccccc;
+    -webkit-app-region: drag;
+
+    .window-button {
+        float: right;
+        margin: 5px 2.5px; 
+        width: 30px;
+        height: 30px;
+        transition: background-color 0.25s ease-out;
+        -webkit-app-region: no-drag;
+    }
+
+    #close {
+        background-image: url("../images/titlebar/close.png");
+        background-color: #B5001E;
+        &:hover {
+            background-color: #DD2846;
+        }
+        margin-right: 5px;
+    }
+
+    #minimize {
+        background-image: url("../images/titlebar/minimize.png");
+        background-color: #C0C0C0;
+        &:hover {
+            background-color: #E0E0E0;
+        }
+    }
+    #maximize {
+        background-color: #C0C0C0;
+        &:hover {
+            background-color: #E0E0E0;
+        }
+    }
+}
