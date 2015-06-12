@@ -16,22 +16,23 @@ leike.controller('MainController', ['$scope', '$interval', function ($scope, $in
 
                 currentClipboard = clipboardData;
                 $scope.items.push(clipboardData);
-            } else if (clipboard.readImage() !== currentClipboard) {
+            } else if (clipboard.readImage().toPng().toString() !== currentClipboard && !clipboard.readImage().isEmpty()) {
                 writeImage(clipboard.readImage().toPng());
                 clipboardData = "[image]";
 
+                currentClipboard = clipboard.readImage().toPng().toString();
+
                 console.log("Data is an image! - " + clipboardData);
 
-                currentClipboard = clipboardData;
                 $scope.items.push(clipboardData);
             }
         }
 
         function writeImage(data) {
             fs.writeFile('clipboard_images/tempimage.png', data, function (err) {
-                if (err)
+                if (err) {
                     throw err;
-                console.log('It\'s saved!');
+                }
             });
         }
 
