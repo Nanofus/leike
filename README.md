@@ -1,2 +1,2 @@
 # leike
-A simple clipboard expansion utility for Windows. Work in progress.
+A simple clipboard expansion utility for Windows, using Electron & AngularJS. Work in progress.
