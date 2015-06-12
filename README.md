@@ -11,3 +11,4 @@ A simple clipboard expansion utility for Windows, using Electron & AngularJS. Wo
 * JSON export
 * Better UI
 * Pushbullet integration
+* Linux & OSX versions
