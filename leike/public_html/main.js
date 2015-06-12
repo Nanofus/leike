@@ -4,17 +4,32 @@ var app = require('app');
 var BrowserWindow = require('browser-window');
 var mainWindow = null;
 
-app.on('window-all-closed', function() {
-  if (process.platform != 'darwin')
-    app.quit();
+var Menu = require('menu');
+var Tray = require('tray');
+
+app.on('window-all-closed', function () {
+    //if (process.platform != 'darwin')
+    //  app.quit();
 });
 
-app.on('ready', function() {
-  mainWindow = new BrowserWindow({width: 300, height: 600, frame: false});
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
-  mainWindow.openDevTools();
+app.on('ready', function () {
+    mainWindow = new BrowserWindow({width: 300, height: 600, frame: false});
+    mainWindow.loadUrl('file://' + __dirname + '/index.html');
+    mainWindow.openDevTools();
 
-  mainWindow.on('closed', function() {
-    mainWindow = null;
-  });
+    mainWindow.on('closed', function () {
+        mainWindow = null;
+    });
+
+    appIcon = new Tray('images/trayicon.png');
+    var contextMenu = Menu.buildFromTemplate([
+        {label: 'Show', click: function () {
+                mainWindow.show();
+            }},
+        {label: 'Quit', click: function () {
+                app.quit();
+            }}
+    ]);
+    appIcon.setToolTip('leike');
+    appIcon.setContextMenu(contextMenu);
 });

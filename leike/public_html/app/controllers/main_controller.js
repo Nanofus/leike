@@ -12,7 +12,7 @@ leike.controller('MainController', ['$scope', '$interval', function ($scope, $in
             if (clipboard.readText() !== currentClipboard && clipboard.readText() !== "") {
                 clipboardData = clipboard.readText();
 
-                console.log("Data is text! - " + clipboardData);
+                //console.log("Data is text! - " + clipboardData);
 
                 currentClipboard = clipboardData;
                 $scope.items.push(clipboardData);
@@ -22,7 +22,7 @@ leike.controller('MainController', ['$scope', '$interval', function ($scope, $in
 
                 currentClipboard = clipboard.readImage().toPng().toString();
 
-                console.log("Data is an image! - " + clipboardData);
+                //console.log("Data is an image! - " + clipboardData);
 
                 $scope.items.push(clipboardData);
             }

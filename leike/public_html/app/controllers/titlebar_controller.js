@@ -5,7 +5,7 @@ leike.controller('TitlebarController', ['$scope', '$interval', function ($scope,
         $scope.maximizeStyle = {'background-image': 'url(images/titlebar/' + maximizeMode + '.png)'};
 
         $scope.closeWindow = function () {
-            remote.getCurrentWindow().close();
+            remote.getCurrentWindow().hide();
         };
 
         $scope.minimizeWindow = function () {
