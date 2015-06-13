@@ -1,5 +1,3 @@
-<h3>Fonts</h3>
-
-<ul ng-repeat="item in items track by $index">
-  <li>{{item}}</li>
-</ul>
+<div ng-repeat="item in items track by $index">
+  <p class="select">{{item.content}} - {{item.timestamp}}</p>
+</div>
