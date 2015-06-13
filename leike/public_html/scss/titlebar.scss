@@ -1,39 +1,60 @@
+$titlebar-height: 40px;
+$titlebar-color: #cccccc;
+
+$button-width: 30px;
+$button-height: 30px;
+
+$button-margin: 5px;
+
+$button-normal: #C0C0C0;
+$button-hover: #E0E0E0;
+$button-close: #B5001E;
+$button-close-hover: #DD2846;
+
+$content-margin: 8px;
+
 body {
     margin: 0px;
     padding: 0px;
 }
 
 #content {
-    margin: 8px;
+    margin: $content-margin;
+    margin-top: $titlebar-height;
 }
 
 #titlebar {
-    height: 40px;
+    height: $titlebar-height;
     width: 100%;
-    background-color: #cccccc;
+    background-color: $titlebar-color;
     -webkit-app-region: drag;
+
+    top: 0px;
+    position: fixed;
 
     .window-button {
         float: right;
-        margin: 5px 2.5px; 
-        width: 30px;
-        height: 30px;
+        margin: $button-margin $button-margin/2; 
+        width: $button-width;
+        height: $button-height;
         transition: background-color 0.25s ease-out;
         -webkit-app-region: no-drag;
-        
-        background-color: #C0C0C0;
+
+        background-color: $button-normal;
         &:hover {
-            background-color: #E0E0E0;
+            background-color: $button-hover;
         }
     }
 
     #close {
+        margin-right: $button-margin;
+
         background-image: url("../images/titlebar/close.png");
-        background-color: #B5001E;
+        background-color: $button-close;
+
         &:hover {
-            background-color: #DD2846;
+            background-color: $button-close-hover;
         }
-        margin-right: 5px;
     }
 
     #minimize {
