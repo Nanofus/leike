@@ -1,5 +1,5 @@
 # leike
-A simple clipboard expansion utility for Windows, using [Electron](https://github.com/atom/electron) && [Vue.js](https://github.com/vuejs/vue). Written in [CoffeeScript](https://github.com/jashkenas/coffeescript) && [SASS](https://github.com/sass/sass). Works on Windows, untested on OSX and Linux.
+A simple clipboard expansion utility, using [Electron](https://github.com/atom/electron) && [Vue.js](https://github.com/vuejs/vue). Written in [CoffeeScript](https://github.com/jashkenas/coffeescript) && [SASS](https://github.com/sass/sass). Works on Windows, untested on OSX and Linux.
 
 Pre-built binaries coming soon.
 
