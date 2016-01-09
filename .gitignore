@@ -1,6 +1,8 @@
 /node_modules/
 /bower_components/
 /clipboard_images/
-.DS_Store
-build
-npm-debug.log
+/.DS_Store/
+/build/
+/npm-debug.log/
+/css/
+/app/

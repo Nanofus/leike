@@ -5,11 +5,17 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <div id="entry-list">
+    <ul id="entry-list">
       <li v-for="entry in entries">
-        {{ entry.content }} - {{ entry.timestamp }}
+        <div v-if="entry.type == 'text'">
+          {{ entry.content }} - {{ entry.timestamp }}
+        </div>
+        <div v-if="entry.type == 'image'">
+          <a v-bind:href="entry.content">{{ entry.content }}</a> ///
+          <img v-bind:src="entry.content" class="transparent-background"> - {{ entry.timestamp }}
+        </div>
       </li>
-    </div>
+    </ul>
 
     <script type="text/javascript" src="node_modules\vue\dist\vue.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="node_modules\marked\marked.min.js" charset="utf-8"></script>
