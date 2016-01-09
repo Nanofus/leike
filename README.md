@@ -6,6 +6,8 @@ Pre-built binaries coming soon.
 ## Usage
 
 ```sh
+## Installation
+
 # Install dependencies
 npm install
 
@@ -14,6 +16,14 @@ gulp
 
 # Run
 npm start
+
+## Other configured gulps
+
+# Clean compiled files
+gulp clean
+
+# Watch for changes in stylesheets & scripts
+gulp watch
 ```
 
 ## Features
