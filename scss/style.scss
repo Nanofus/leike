@@ -10,18 +10,19 @@ $area-color: #5FC9F3;
 $text-color: #2E79BA;
 $highlight-color: #1E549F;
 
-$titlebar-height: 40px;
-$titlebar-color: #cccccc;
-$button-width: 30px;
-$button-height: 30px;
-$button-margin: 5px;
-$button-normal: #C0C0C0;
-$button-hover: #E0E0E0;
+$titlebar-height: 2rem;
+$titlebar-color: #5FC9F3;
+$button-width: 2rem;
+$button-height: 1.6rem;
+$button-margin: 1rem;
+$button-normal: #5FC9F3;
+$button-hover: #2E79BA;
 $button-close: #B5001E;
 $button-close-hover: #DD2846;
-$content-margin: 8px;
 
 body {
+  margin: 0;
+  padding: 0;
   font: 100% $font-stack;
 	color: $text-color;
 	background-color: $background-color;
@@ -36,7 +37,7 @@ header {
   width: 100%;
   background-color: $titlebar-color;
   -webkit-app-region: drag;
-  top: 0px;
+  top: 0;
   position: fixed;
   .window-button {
     float: right;
@@ -61,4 +62,8 @@ header {
   #minimize {
     background-image: url("../images/titlebar/minimize.png");
   }
+}
+
+main {
+  margin-top: $titlebar-height;
 }

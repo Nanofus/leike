@@ -12,17 +12,19 @@
        <div class="window-button" id="minimize" v-on:click="minimizeWindow()"></div>
       </div>
     </header>
-    <ul id="entry-list">
-      <li v-for="entry in entries">
-        <div v-if="entry.type == 'text'">
-          {{ entry.content }} - {{ entry.timestamp }}
-        </div>
-        <div v-if="entry.type == 'image'">
-          <button v-on:click="openInFileManager(entry.content)">Open in file manager</button>
-          <img v-bind:src="entry.content" class="transparent-background"> - {{ entry.timestamp }}
-        </div>
-      </li>
-    </ul>
+    <main>
+      <ul id="entry-list">
+        <li v-for="entry in entries">
+          <div v-if="entry.type == 'text'">
+            {{ entry.content }} - {{ entry.timestamp }}
+          </div>
+          <div v-if="entry.type == 'image'">
+            <button v-on:click="openInFileManager(entry.content)">Open in file manager</button>
+            <img v-bind:src="entry.content" class="transparent-background"> - {{ entry.timestamp }}
+          </div>
+        </li>
+      </ul>
+    </main>
 
     <script type="text/javascript" src="node_modules\vue\dist\vue.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/app.js" charset="utf-8"></script>
