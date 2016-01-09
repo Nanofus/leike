@@ -3,6 +3,6 @@
 /clipboard_images/
 /.DS_Store/
 /build/
-/npm-debug.log/
+npm-debug.log
 /css/
 /app/

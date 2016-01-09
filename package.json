@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Nanofus/leike#readme",
   "devDependencies": {
+    "del": "^2.2.0",
     "electron-prebuilt": "*",
     "gulp": "^3.9.0",
     "gulp-coffee": "^2.3.1",
@@ -29,7 +30,6 @@
   },
   "dependencies": {
     "fs-extra": "^0.26.4",
-    "marked": "^0.3.5",
     "vue": "^1.0.13"
   }
 }
