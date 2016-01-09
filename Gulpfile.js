@@ -16,6 +16,9 @@ gulp.task('coffee', function() {
   gulp.src('./src/*.coffee')
     .pipe(coffee({bare: true}).on('error', gutil.log))
     .pipe(gulp.dest('./build/'));
+  gulp.src('./main.coffee')
+    .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(gulp.dest('./'));
 });
 
 gulp.task('watch', function() {
@@ -24,7 +27,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('clean', function() {
-    return del(['./build']);
+    return del(['./build','./main.js']);
 });
 
 gulp.task('default', ['clean'], function() {
