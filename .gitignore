@@ -1,4 +1,6 @@
-/leike/nbproject/private/
-/leike/public_html/node_modules/
-/leike/public_html/bower_components/
-/leike/public_html/clipboard_images/
+/node_modules/
+/bower_components/
+/clipboard_images/
+.DS_Store
+build
+npm-debug.log

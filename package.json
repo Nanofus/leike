@@ -1,0 +1,32 @@
+{
+  "name": "leike",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Ville Talonpoika",
+  "license": "GPL-2.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nanofus/leike.git"
+  },
+  "keywords": [
+    "clipboard",
+    "manager"
+  ],
+  "bugs": {
+    "url": "https://github.com/Nanofus/leike/issues"
+  },
+  "homepage": "https://github.com/Nanofus/leike#readme",
+  "devDependencies": {
+    "electron-prebuilt": "*",
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.1.1"
+  },
+  "dependencies": {
+    "marked": "^0.3.5",
+    "vue": "^1.0.13"
+  }
+}
