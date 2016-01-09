@@ -1,25 +1,32 @@
 remote = require('remote')
 clipboard = remote.require('clipboard')
 currentClipboard = clipboard.readText()
-fs = remote.require('fs')
+fs = remote.require('fs-extra')
+shell = remote.require('shell')
+
+app = remote.require('electron').app;
 
 entries = new Array
+
+filePath = app.getPath('desktop') + '\\leike_images\\'
 
 vm = new Vue(
   el: '#entry-list'
   data: entries: entries
   methods:
     writeImage: (data, name) ->
-      fs.writeFile 'clipboard_images/' + name + '.png', data, (err) ->
+      fs.ensureDir filePath, (err) ->
         if err
           throw err
         return
-      'clipboard_images/' + name + '.png'
+      fs.writeFile filePath + name + '.png', data, (err) ->
+        if err
+          throw err
+        return
+      filePath + name + '.png'
 
     saveToClipboard: ->
-      clipboardData = undefined
       time = new Date
-      writeImage = @writeImage
       if clipboard.readText() != currentClipboard and clipboard.readText() != ''
         clipboardData =
           content: clipboard.readText()
@@ -29,7 +36,7 @@ vm = new Vue(
         currentClipboard = clipboard.readText()
         entries.push clipboardData
       else if clipboard.readImage().toPng().toString() != currentClipboard and !clipboard.readImage().isEmpty()
-        path = writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
+        path = @writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
         clipboardData =
           content: path
           type: 'image'
@@ -37,7 +44,10 @@ vm = new Vue(
         currentClipboard = clipboard.readImage().toPng().toString()
         #console.log("Data is an image! - " + clipboardData);
         entries.push clipboardData
-      return
+
+    openInFileManager: (path) ->
+      console.log("opening " + path)
+      shell.showItemInFolder(path)
 )
 
 setInterval (->
@@ -45,4 +55,4 @@ setInterval (->
     vm.saveToClipboard()
     currentClipboard = clipboard.readText()
   return
-), 100
+), 20

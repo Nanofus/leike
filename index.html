@@ -11,7 +11,7 @@
           {{ entry.content }} - {{ entry.timestamp }}
         </div>
         <div v-if="entry.type == 'image'">
-          <a v-bind:href="entry.content">{{ entry.content }}</a> ///
+          <button v-on:click="openInFileManager(entry.content)">Open in file manager</button>
           <img v-bind:src="entry.content" class="transparent-background"> - {{ entry.timestamp }}
         </div>
       </li>

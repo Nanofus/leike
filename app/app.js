@@ -1,4 +1,4 @@
-var clipboard, currentClipboard, entries, fs, remote, vm;
+var app, clipboard, currentClipboard, entries, filePath, fs, remote, shell, vm;
 
 remote = require('remote');
 
@@ -6,9 +6,15 @@ clipboard = remote.require('clipboard');
 
 currentClipboard = clipboard.readText();
 
-fs = remote.require('fs');
+fs = remote.require('fs-extra');
+
+shell = remote.require('shell');
+
+app = remote.require('electron').app;
 
 entries = new Array;
+
+filePath = app.getPath('desktop') + '\\leike_images\\';
 
 vm = new Vue({
   el: '#entry-list',
@@ -17,18 +23,21 @@ vm = new Vue({
   },
   methods: {
     writeImage: function(data, name) {
-      fs.writeFile('clipboard_images/' + name + '.png', data, function(err) {
+      fs.ensureDir(filePath, function(err) {
         if (err) {
           throw err;
         }
       });
-      return 'clipboard_images/' + name + '.png';
+      fs.writeFile(filePath + name + '.png', data, function(err) {
+        if (err) {
+          throw err;
+        }
+      });
+      return filePath + name + '.png';
     },
     saveToClipboard: function() {
-      var clipboardData, path, time, writeImage;
-      clipboardData = void 0;
+      var clipboardData, path, time;
       time = new Date;
-      writeImage = this.writeImage;
       if (clipboard.readText() !== currentClipboard && clipboard.readText() !== '') {
         clipboardData = {
           content: clipboard.readText(),
@@ -36,17 +45,21 @@ vm = new Vue({
           timestamp: time
         };
         currentClipboard = clipboard.readText();
-        entries.push(clipboardData);
+        return entries.push(clipboardData);
       } else if (clipboard.readImage().toPng().toString() !== currentClipboard && !clipboard.readImage().isEmpty()) {
-        path = writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds());
+        path = this.writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds());
         clipboardData = {
           content: path,
           type: 'image',
           timestamp: time
         };
         currentClipboard = clipboard.readImage().toPng().toString();
-        entries.push(clipboardData);
+        return entries.push(clipboardData);
       }
+    },
+    openInFileManager: function(path) {
+      console.log("opening " + path);
+      return shell.showItemInFolder(path);
     }
   }
 });
@@ -56,4 +69,4 @@ setInterval((function() {
     vm.saveToClipboard();
     currentClipboard = clipboard.readText();
   }
-}), 100);
+}), 20);
