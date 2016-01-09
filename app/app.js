@@ -11,10 +11,6 @@ var vm = new Vue({
     entries: entries
   },
   methods: {
-    say: function (msg) {
-      this.saveToClipboard();
-    },
-
     writeImage: function (data, name) {
         fs.writeFile('clipboard_images/' + name + '.png', data, function (err) {
             if (err) {
@@ -25,7 +21,7 @@ var vm = new Vue({
 
     saveToClipboard: function() {
         var clipboardData;
-        var time = (new Date).getTime();
+        var time = new Date();
         var writeImage = this.writeImage;
         if (clipboard.readText() !== currentClipboard && clipboard.readText() !== "") {
             clipboardData = {content: clipboard.readText(), timestamp: time};
@@ -33,7 +29,7 @@ var vm = new Vue({
             currentClipboard = clipboard.readText();
             entries.push(clipboardData);
         } else if (clipboard.readImage().toPng().toString() !== currentClipboard && !clipboard.readImage().isEmpty()) {
-            writeImage(clipboard.readImage().toPng(), time);
+            writeImage(clipboard.readImage().toPng(), time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + " " + time.getHours() + "-" + time.getMinutes() + "-" + time.getSeconds() + "-" + time.getMilliseconds());
             clipboardData = {content: "[image]", timestamp: time};
             currentClipboard = clipboard.readImage().toPng().toString();
             //console.log("Data is an image! - " + clipboardData);
@@ -42,3 +38,10 @@ var vm = new Vue({
     }
   }
 })
+
+setInterval(function () {
+  if (clipboard.readText() !== currentClipboard) {
+    vm.saveToClipboard();
+    currentClipboard = clipboard.readText();
+  }
+}, 100);

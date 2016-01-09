@@ -6,7 +6,6 @@
   </head>
   <body>
     <div id="entry-list">
-      <button v-on:click="say('hi')">Say Hi</button>
       <li v-for="entry in entries">
         {{ entry.content }} - {{ entry.timestamp }}
       </li>
