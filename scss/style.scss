@@ -10,6 +10,17 @@ $area-color: #5FC9F3;
 $text-color: #2E79BA;
 $highlight-color: #1E549F;
 
+$titlebar-height: 40px;
+$titlebar-color: #cccccc;
+$button-width: 30px;
+$button-height: 30px;
+$button-margin: 5px;
+$button-normal: #C0C0C0;
+$button-hover: #E0E0E0;
+$button-close: #B5001E;
+$button-close-hover: #DD2846;
+$content-margin: 8px;
+
 body {
   font: 100% $font-stack;
 	color: $text-color;
@@ -18,4 +29,36 @@ body {
 
 .transparent-background {
   background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKElEQVQYV2M8c+bMfwY0YGxsjC7EwDgUFP7//x/DM2fPnsX0zBBQCABDRTPmUj2M4gAAAABJRU5ErkJggg==) repeat;
+}
+
+header {
+  height: $titlebar-height;
+  width: 100%;
+  background-color: $titlebar-color;
+  -webkit-app-region: drag;
+  top: 0px;
+  position: fixed;
+  .window-button {
+    float: right;
+    margin: $button-margin $button-margin/2;
+    width: $button-width;
+    height: $button-height;
+    transition: background-color 0.25s ease-out;
+    -webkit-app-region: no-drag;
+    background-color: $button-normal;
+    &:hover {
+      background-color: $button-hover;
+    }
+  }
+  #close {
+    margin-right: $button-margin;
+    background-image: url("../images/titlebar/close.png");
+    background-color: $button-close;
+    &:hover {
+      background-color: $button-close-hover;
+    }
+  }
+  #minimize {
+    background-image: url("../images/titlebar/minimize.png");
+  }
 }

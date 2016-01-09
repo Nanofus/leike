@@ -5,6 +5,13 @@
     <link rel="stylesheet" type="text/css" href="build/css/style.css">
   </head>
   <body>
+    <header>
+      <div id="window-buttons">
+       <div class="window-button" id="close" v-on:click="closeWindow()"></div>
+       <div class="window-button" id="maximize" v-on:click="maximizeWindow()"></div>
+       <div class="window-button" id="minimize" v-on:click="minimizeWindow()"></div>
+      </div>
+    </header>
     <ul id="entry-list">
       <li v-for="entry in entries">
         <div v-if="entry.type == 'text'">
