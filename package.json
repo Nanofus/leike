@@ -37,7 +37,9 @@
     "gulp-util": "^3.0.7"
   },
   "dependencies": {
+    "autolinker": "^0.22.0",
     "fs-extra": "^0.26.4",
+    "highlight.js": "^9.1.0",
     "vue": "^1.0.13"
   }
 }

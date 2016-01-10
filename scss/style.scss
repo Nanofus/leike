@@ -34,7 +34,7 @@ body {
   width: 100%;
   overflow: hidden;
   font: 100% $font-stack;
-	color: $text-color;
+  color: $text-color;
 	background-color: $background-color;
 }
 
@@ -81,7 +81,6 @@ main {
   width: 100%;
   margin-top: $titlebar-height;
   height: calc(100% - 2rem);
-  overflow: scroll;
   overflow-x: hidden;
 }
 
