@@ -5,24 +5,29 @@
 
 $font-stack: OpenSans, sans-serif;
 
-$background-color: #081F37;
-$area-color: #5FC9F3;
-$text-color: #2E79BA;
-$highlight-color: #1E549F;
+$background-color: #F4F7F7;
+$area-color: #AACFD0;
+$text-color: #1F4E5F;
+$highlight-color: #79A8A9;
 
 $titlebar-height: 2rem;
-$titlebar-color: #5FC9F3;
+$titlebar-color: $area-color;
 $button-width: 2rem;
 $button-height: 1.6rem;
-$button-margin: 1rem;
-$button-normal: #5FC9F3;
-$button-hover: #2E79BA;
+$button-margin: 0.2rem;
+$button-normal: $area-color;
+$button-hover: $highlight-color;
 $button-close: #B5001E;
 $button-close-hover: #DD2846;
+
+$image-height: 5rem;
 
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
   font: 100% $font-stack;
 	color: $text-color;
 	background-color: $background-color;
@@ -38,10 +43,11 @@ header {
   background-color: $titlebar-color;
   -webkit-app-region: drag;
   top: 0;
-  position: fixed;
+  position: absolute;
+  z-index: 500;
   .window-button {
     float: right;
-    margin: $button-margin $button-margin/2;
+    margin: $button-margin $button-margin;
     width: $button-width;
     height: $button-height;
     transition: background-color 0.25s ease-out;
@@ -59,11 +65,46 @@ header {
       background-color: $button-close-hover;
     }
   }
+  #maximize {
+    background-image: url("../images/titlebar/maximize.png");
+  }
   #minimize {
     background-image: url("../images/titlebar/minimize.png");
   }
 }
 
 main {
+  width: 100%;
   margin-top: $titlebar-height;
+  height: calc(100% - 2rem);
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+li {
+  position: relative;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $area-color;
+  padding: 0.6rem;
+  padding-bottom: 2rem;
+}
+
+.entry-content {
+  background-color: darken($background-color,10%);
+  padding: 0.6rem;
+  & img {
+    height: $image-height;
+  }
+}
+.timestamp {
+  position: absolute;
+  font-size: 75%;
+  color: darken($background-color,40%);
+  right: 1rem;
+  bottom: 0.6rem;
 }

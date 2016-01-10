@@ -13,20 +13,25 @@
       </div>
     </header>
     <main>
-      <ul id="entry-list">
-        <li v-for="entry in entries">
-          <div v-if="entry.type == 'text'">
-            {{ entry.content }} - {{ entry.timestamp }}
-          </div>
-          <div v-if="entry.type == 'image'">
-            <button v-on:click="openInFileManager(entry.content)">Open in file manager</button>
-            <img v-bind:src="entry.content" class="transparent-background"> - {{ entry.timestamp }}
-          </div>
-        </li>
-      </ul>
+      <div id="content">
+        <ul id="entry-list">
+          <li v-for="entry in entries">
+            <div v-if="entry.type == 'text'">
+              <div class="entry-content">{{ entry.content }}</div>
+              <div class="timestamp">{{ entry.timestamp }}</div>
+            </div>
+            <div v-if="entry.type == 'image'">
+              <button v-on:click="openInFileManager(entry.content)">Open in file manager</button>
+              <div class="entry-content"><img v-bind:src="entry.content" class="transparent-background"></div>
+              <div class="timestamp">{{ entry.timestamp }}</div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </main>
 
     <script type="text/javascript" src="node_modules\vue\dist\vue.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/app.js" charset="utf-8"></script>
+    <script type="text/javascript" src="build/ui-scripts.js" charset="utf-8"></script>
   </body>
 </html>
