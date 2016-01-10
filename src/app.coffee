@@ -51,7 +51,7 @@ vm = new Vue(
         console.log("Data is text!")
         console.log(clipboardData)
         currentClipboard = clipboard.readText()
-        entries.push clipboardData
+        entries.unshift clipboardData
       else if clipboard.readImage().toPng().toString() != currentClipboard and !clipboard.readImage().isEmpty()
         path = @writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
         clipboardData =
@@ -60,7 +60,7 @@ vm = new Vue(
           timestamp: time
         currentClipboard = clipboard.readImage().toPng().toString()
         #console.log("Data is an image! - " + clipboardData);
-        entries.push clipboardData
+        entries.unshift clipboardData
 
     openInFileManager: (path) ->
       console.log("opening " + path)
