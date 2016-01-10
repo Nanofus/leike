@@ -17,10 +17,16 @@ gulp
 # Run
 npm start
 
+# Build standalone app into ./dist
+npm run pack:win
+
 ## Other configured gulps
 
 # Clean compiled files
 gulp clean
+
+# Clean compiled builds
+npm clean
 
 # Watch for changes in stylesheets & scripts
 gulp watch

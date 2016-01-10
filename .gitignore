@@ -5,4 +5,6 @@
 /build/
 npm-debug.log
 /css/
-/app/
+/app/build
+/cache/
+/dist/

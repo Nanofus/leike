@@ -11,6 +11,8 @@ const clipboard = electron.clipboard;
 const Menu = require('menu');
 const Tray = require('tray');
 
+var path = require('path');
+
 var appIcon = null;
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -32,6 +34,10 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  mainWindow.webContents.on('will-navigate', ev => {
+    ev.preventDefault()
+  });
 }
 
 // This method will be called when Electron has finished
@@ -39,7 +45,7 @@ function createWindow () {
 app.on('ready', function () {
     createWindow();
 
-    appIcon = new Tray('img/icon.png');
+    appIcon = new Tray(path.join(__dirname, 'img/icon-16px.png'));
     var contextMenu = Menu.buildFromTemplate([
       {label: 'Show', click: function () {
         mainWindow.show();
