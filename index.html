@@ -6,6 +6,7 @@
   </head>
   <body>
     <header>
+      <h1>Leike</h1>
       <div id="window-buttons">
        <div class="window-button" id="close" v-on:click="closeWindow()"></div>
        <div class="window-button" id="maximize" v-on:click="maximizeWindow()"></div>
@@ -17,14 +18,14 @@
         <ul id="entry-list">
           <li v-for="entry in entries">
             <div v-if="entry.type == 'text'">
-              <div class="entry-content">{{ entry.content }}</div>
-              <div class="timestamp">{{ entry.timestamp }}</div>
+              <p class="entry-content">{{ entry.content }}</p>
             </div>
             <div v-if="entry.type == 'image'">
-              <button v-on:click="openInFileManager(entry.content)">Open in file manager</button>
               <div class="entry-content"><img v-bind:src="entry.content" class="transparent-background"></div>
-              <div class="timestamp">{{ entry.timestamp }}</div>
+              <input type="submit" name="submit" value="Open in folder" v-on:click="openInFileManager(entry.content)"/>
             </div>
+            <input type="submit" name="submit" value="Delete" v-on:click="deleteEntry(entry)"/>
+            <div class="timestamp">{{ entry.timestamp }}</div>
           </li>
         </ul>
       </div>

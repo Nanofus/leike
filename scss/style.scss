@@ -1,9 +1,14 @@
 @font-face {
   font-family: OpenSans;
-  src: url(../../fonts/OpenSans-Regular.ttf);
+  src: url(../../fonts/OpenSans/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: SansitaOne;
+  src: url(../../fonts/SansitaOne/SansitaOne.ttf);
 }
 
 $font-stack: OpenSans, sans-serif;
+$header-font: SansitaOne, sans-serif;
 
 $background-color: #F4F7F7;
 $area-color: #AACFD0;
@@ -17,8 +22,8 @@ $button-height: 1.6rem;
 $button-margin: 0.2rem;
 $button-normal: $area-color;
 $button-hover: $highlight-color;
-$button-close: #B5001E;
-$button-close-hover: #DD2846;
+$button-close: $area-color;
+$button-close-hover: $highlight-color;
 
 $image-height: 5rem;
 
@@ -50,26 +55,25 @@ header {
     margin: $button-margin $button-margin;
     width: $button-width;
     height: $button-height;
-    transition: background-color 0.25s ease-out;
+    transition: background-color 0.15s ease-out;
     -webkit-app-region: no-drag;
     background-color: $button-normal;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     &:hover {
       background-color: $button-hover;
     }
   }
   #close {
     margin-right: $button-margin;
-    background-image: url("../images/titlebar/close.png");
-    background-color: $button-close;
-    &:hover {
-      background-color: $button-close-hover;
-    }
+    background-image: url("../../img/header/close.png");
   }
   #maximize {
-    background-image: url("../images/titlebar/maximize.png");
+    background-image: url("../../img/header/maximize.png");
   }
   #minimize {
-    background-image: url("../images/titlebar/minimize.png");
+    background-image: url("../../img/header/minimize.png");
   }
 }
 
@@ -79,6 +83,16 @@ main {
   height: calc(100% - 2rem);
   overflow: scroll;
   overflow-x: hidden;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  padding-top: 0.3rem;
+  padding-left: 0.5rem;
+  float: left;
+  font: 130% $header-font;
+  color: $background-color;
 }
 
 ul {
@@ -95,6 +109,7 @@ li {
 }
 
 .entry-content {
+  white-space: pre-wrap;
   background-color: darken($background-color,10%);
   padding: 0.6rem;
   & img {
@@ -107,4 +122,18 @@ li {
   color: darken($background-color,40%);
   right: 1rem;
   bottom: 0.6rem;
+}
+
+input[type="submit"]{
+  font: 75% $font-stack;
+  color: $text-color;
+  background-color: $area-color;
+  border: 0;
+  margin: 0.2rem;
+  float: left;
+  transition: background-color 0.15s ease-out;
+}
+
+input[type="submit"]:hover{
+  background-color: $highlight-color;
 }

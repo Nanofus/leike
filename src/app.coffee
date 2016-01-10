@@ -48,7 +48,8 @@ vm = new Vue(
           content: clipboard.readText()
           type: 'text'
           timestamp: time
-        #console.log("Data is text! - " + clipboardData);
+        console.log("Data is text!")
+        console.log(clipboardData)
         currentClipboard = clipboard.readText()
         entries.push clipboardData
       else if clipboard.readImage().toPng().toString() != currentClipboard and !clipboard.readImage().isEmpty()
@@ -64,6 +65,12 @@ vm = new Vue(
     openInFileManager: (path) ->
       console.log("opening " + path)
       shell.showItemInFolder(path)
+
+    deleteEntry: (entry) ->
+      console.log("deleting " + entry)
+      index = @entries.indexOf(entry)
+      if index > -1
+        @entries.splice(index, 1)
 )
 
 setInterval (->
