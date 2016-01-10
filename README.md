@@ -3,11 +3,17 @@ A simple clipboard expansion utility, using [Electron](https://github.com/atom/e
 
 Pre-built binaries coming soon.
 
-## Usage
+## Features
+
+The application runs in the background and records all text and images that enter the clipboard. The text is saved into memory and images copied into a folder (currently desktop). Via the main window the user can view their clipboard log.
+
+The application can be quit by right-clicking the tray icon.
+
+## Building
+
+How to run & build:
 
 ```sh
-## Installation
-
 # Install dependencies
 npm install
 
@@ -19,9 +25,11 @@ npm start
 
 # Build standalone app into ./dist
 npm run pack:win
+```
 
-## Other configured gulps
+Other configured scripts:
 
+```sh
 # Clean compiled files
 gulp clean
 
@@ -31,11 +39,6 @@ npm clean
 # Watch for changes in stylesheets & scripts
 gulp watch
 ```
-
-## Features
-
-* Background logging for clipboard text and images
-* Saves images into a folder
 
 ## Todo
 
