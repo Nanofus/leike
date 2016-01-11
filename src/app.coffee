@@ -3,12 +3,25 @@ clipboard = remote.require('clipboard')
 currentClipboard = clipboard.readText()
 fs = remote.require('fs-extra')
 shell = remote.require('shell')
-
 app = remote.require('electron').app;
+
+packageJson = require('../package.json');
 
 entries = new Array
 
-filePath = app.getPath('desktop') + '\\leike_images\\'
+filePath = app.getPath('documents') + '\\leike\\'
+
+openLinkExternally= (url) ->
+  shell.openExternal(url)
+
+openFilePath= ->
+  shell.showItemInFolder(filePath)
+
+showFaq= () ->
+  if document.getElementById("faq").style.display == "block"
+    document.getElementById("faq").style.display="none"
+  else
+    document.getElementById("faq").style.display="block"
 
 header = new Vue(
   el: 'header'
@@ -24,6 +37,15 @@ header = new Vue(
 
     minimizeWindow: ->
       remote.getCurrentWindow().minimize()
+
+    openSettings: ->
+      # Open dev tools
+      remote.getCurrentWindow().webContents.openDevTools();
+)
+
+faq = new Vue(
+  el: '#faq'
+  data: packageJson: packageJson
 )
 
 vm = new Vue(
@@ -63,11 +85,11 @@ vm = new Vue(
         entries.unshift clipboardData
 
     openInFileManager: (path) ->
-      console.log("opening " + path)
+      #console.log("opening " + path)
       shell.showItemInFolder(path)
 
     deleteEntry: (entry) ->
-      console.log("deleting " + entry)
+      #console.log("deleting " + entry)
       if entry.type == 'image'
         fs.unlink entry.content, (err) ->
           if err
@@ -77,11 +99,6 @@ vm = new Vue(
       if index > -1
         @entries.splice(index, 1)
 )
-
-openLinkExternally= (url) ->
-  console.log("opening in browser " + url)
-  shell.openExternal(url)
-
 
 setInterval (->
   if clipboard.readText() != currentClipboard

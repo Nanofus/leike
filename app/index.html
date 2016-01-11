@@ -14,9 +14,19 @@
        <div class="window-button" id="close" v-on:click="closeWindow()"></div>
        <div class="window-button" id="maximize" v-on:click="maximizeWindow()"></div>
        <div class="window-button" id="minimize" v-on:click="minimizeWindow()"></div>
+       <div class="window-button" id="settings" v-on:click="openSettings()"></div>
       </div>
     </header>
+    <div id="faq">
+      <h2>Hello there!</h2>
+      <p>This here is Leike, an open-source clipboard utility by Ville Talonpoika, written in CoffeeScript & SASS, using Electron & Vue.js.</p>
+      <p>The app logs all text and images entering the clipboard into memory and saves the images into a <a href="#" onclick="openFilePath()">folder</a>. If an image is deleted from the list, the file is deleted as well.</p>
+      <p>The app keeps running in the background and can be closed from the tray icon.</p>
+      <p>More info at the <a href="#" onclick="openLinkExternally('http://github.com/Nanofus/leike')">GitHub repository</a>.</p>
+      <p>Version: {{packageJson.version}}</p>
+    </div>
     <main>
+      <input type="submit" name="submit" value="?" id="faq-button" onclick="showFaq()"/>
       <div id="content">
         <ul id="entry-list">
           <li v-for="entry in entries">

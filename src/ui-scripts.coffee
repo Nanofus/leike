@@ -1,5 +1,5 @@
 Autolinker = require( 'autolinker' )
-autolinker = new Autolinker({newWindow: false})
+autolinker = new Autolinker({newWindow: false, stripPrefix: false})
 
 domChanged= ->
   autolink()
