@@ -1,4 +1,4 @@
-# ![alt text](https://raw.githubusercontent.com/Nanofus/leike/master/app/img/icon-64px.png "leike") leike
+# ![alt text](https://raw.githubusercontent.com/Nanofus/leike/master/app/img/icon-32px.png "leike") leike
 A simple clipboard expansion utility, using [Electron](https://github.com/atom/electron) && [Vue.js](https://github.com/vuejs/vue). Written in [CoffeeScript](https://github.com/jashkenas/coffeescript) && [SASS](https://github.com/sass/sass). Works on Windows and Ubuntu, untested on OSX and other flavors of Linux.
 
 ## Features
