@@ -1,6 +1,6 @@
 {
   "name": "leike",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "author": "Ville Talonpoika",
   "license": "GPL-2.0",
@@ -10,9 +10,11 @@
     "clean": "gulp cleandist",
     "clean:osx": "gulp cleandist:osx",
     "clean:win": "gulp cleandist:win",
-    "pack": "npm run clean && npm run pack:osx && npm run pack:win",
-    "pack:osx": "npm run clean:osx && electron-packager . \"Leike\" --out=dist/osx --platform=darwin --arch=x64 --version=0.36.1 --icon=app/img/icon.ico",
-    "pack:win": "npm run clean:win && electron-packager . \"Leike\" --out=dist/win --platform=win32 --arch=ia32 --version=0.36.1 --icon=app/img/icon.ico"
+    "clean:linux": "gulp cleandist:linux",
+    "pack": "npm run clean && npm run pack:linux && npm run pack:win",
+    "pack:osx": "npm run clean:osx && electron-packager . \"Leike\" --out=dist/osx --platform=darwin --version=0.36.1 --icon=app/img/icon.ico",
+    "pack:win": "npm run clean:win && electron-packager . \"Leike\" --out=dist/win --platform=win32 --version=0.36.1 --icon=app/img/icon.ico",
+    "pack:linux": "npm run clean:linux && electron-packager . \"Leike\" --out=dist/linux --platform=linux --version=0.36.1"
   },
   "repository": {
     "type": "git",

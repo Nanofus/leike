@@ -1,7 +1,5 @@
 # leike
-A simple clipboard expansion utility, using [Electron](https://github.com/atom/electron) && [Vue.js](https://github.com/vuejs/vue). Written in [CoffeeScript](https://github.com/jashkenas/coffeescript) && [SASS](https://github.com/sass/sass). Works on Windows, untested on OSX and Linux.
-
-Pre-built binaries coming soon.
+A simple clipboard expansion utility, using [Electron](https://github.com/atom/electron) && [Vue.js](https://github.com/vuejs/vue). Written in [CoffeeScript](https://github.com/jashkenas/coffeescript) && [SASS](https://github.com/sass/sass). Works on Windows and Ubuntu, untested on OSX and other flavors of Linux.
 
 ## Features
 
@@ -23,8 +21,8 @@ gulp
 # Run
 npm start
 
-# Build standalone app into ./dist
-npm run pack:win
+# Build standalone Windows and Linux apps into ./dist
+npm run pack
 ```
 
 Other configured scripts:
@@ -33,7 +31,7 @@ Other configured scripts:
 # Clean compiled files
 gulp clean
 
-# Clean compiled builds
+# Clean compiled standalone apps
 npm clean
 
 # Watch for changes in stylesheets & scripts
@@ -44,4 +42,4 @@ gulp watch
 
 * JSON autosave
 * JSON export
-* Linux & OSX versions
+* OSX version

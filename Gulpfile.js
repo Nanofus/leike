@@ -60,6 +60,9 @@ gulp.task('cleandist:osx', function() {
 gulp.task('cleandist:win', function() {
     return del(['./dist/win']);
 });
+gulp.task('cleandist:linux', function() {
+    return del(['./dist/linux']);
+});
 
 gulp.task('default', ['clean'], function() {
   gulp.start('sass', 'coffee');
