@@ -1,0 +1,11 @@
+@font-face {
+  font-family: OpenSans;
+  src: url(../../fonts/OpenSans/OpenSans-Regular.ttf);
+}
+@font-face {
+  font-family: SansitaOne;
+  src: url(../../fonts/SansitaOne/SansitaOne.ttf);
+}
+
+$font-stack: OpenSans, sans-serif;
+$header-font: SansitaOne, sans-serif;

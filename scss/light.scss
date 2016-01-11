@@ -1,0 +1,17 @@
+$background-color: #F4F7F7;
+$area-color: darken(#AACFD0,15%);
+$text-color: #1F4E5F;
+$highlight-color: #FFEA00;
+$button-color: $area-color;
+$button-highlight-color: lighten($area-color,10%);
+$link-color: #F64662;
+$link-hover-color: #C61951;
+$content-color: darken($background-color,10%);
+$timestamp-color: darken($background-color,40%);
+$header-color: $area-color;
+$header-button-normal: $area-color;
+$header-button-hover: lighten($button-color,10%);
+$header-button-close: $area-color;
+$header-button-close-hover: $button-highlight-color;
+
+@import 'main'

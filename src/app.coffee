@@ -4,7 +4,7 @@ clipboard = remote.require('clipboard')
 fs = remote.require('fs-extra')
 shell = remote.require('shell')
 app = remote.require('electron').app;
-packageJson = require('../package.json');
+packageJson = require('../package.json')
 
 # Other values
 filePath = app.getPath('documents') + '/leike/'
@@ -17,37 +17,6 @@ openLinkExternally= (url) ->
 
 openFilePath= ->
   shell.showItemInFolder(filePath)
-
-showFaq= () ->
-  if document.getElementById("faq").style.display == "block"
-    document.getElementById("faq").style.display="none"
-  else
-    document.getElementById("faq").style.display="block"
-
-header = new Vue(
-  el: 'header'
-  methods:
-    closeWindow: ->
-      remote.getCurrentWindow().hide()
-
-    maximizeWindow: ->
-      if !remote.getCurrentWindow().isMaximized()
-        remote.getCurrentWindow().maximize()
-      else
-        remote.getCurrentWindow().unmaximize()
-
-    minimizeWindow: ->
-      remote.getCurrentWindow().minimize()
-
-    openSettings: ->
-      # Open dev tools
-      remote.getCurrentWindow().webContents.openDevTools();
-)
-
-faq = new Vue(
-  el: '#faq'
-  data: packageJson: packageJson
-)
 
 vm = new Vue(
   el: '#entry-list'
@@ -105,8 +74,11 @@ vm = new Vue(
 )
 
 setInterval (->
-  if clipboard.readText() != currentClipboard and clipboard.readText() != ''
+  readText = clipboard.readText()
+  if readText!= currentClipboard and readText != ''
     vm.saveToClipboard('text')
-  else if clipboard.readImage().toPng().toString() != currentClipboard and !clipboard.readImage().isEmpty()
-    vm.saveToClipboard('image')
-), 500
+  else
+    readImage = clipboard.readImage()
+    if readImage.toPng().toString() != currentClipboard and !readImage.isEmpty()
+      vm.saveToClipboard('image')
+), 250

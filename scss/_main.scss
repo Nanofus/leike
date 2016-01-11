@@ -1,0 +1,106 @@
+@mixin shadow() {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+@mixin bg-color-transition() {
+  transition: background-color 0.15s ease-out;
+}
+
+@import 'fonts';
+@import 'header';
+@import 'faq';
+
+$image-height: 5rem;
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font: 100% $font-stack;
+  color: $text-color;
+	background-color: $background-color;
+}
+
+::selection {
+  background: $highlight-color;
+}
+
+.transparent-background {
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKElEQVQYV2M8c+bMfwY0YGxsjC7EwDgUFP7//x/DM2fPnsX0zBBQCABDRTPmUj2M4gAAAABJRU5ErkJggg==) repeat;
+}
+
+main {
+  width: 100%;
+  margin-top: $header-height;
+  height: calc(100% - 2rem);
+  overflow-x: hidden;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+  padding-top: 0.3rem;
+  padding-left: 0.5rem;
+  float: left;
+  font: 130% $header-font;
+  color: $background-color;
+}
+
+p {
+  font: 85% $font-stack;
+}
+
+a {
+  color:$link-color;
+  transition: all 0.2s;
+  text-decoration: none;
+  &:hover {
+    color: $link-hover-color;
+  }
+}
+
+ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+li {
+  position: relative;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: $area-color;
+  padding: 0.6rem;
+  padding-bottom: 2rem;
+}
+
+.entry-content {
+  white-space: pre-wrap;
+  background-color: $content-color;
+  padding: 0.6rem;
+  & img {
+    height: $image-height;
+  }
+}
+.timestamp {
+  position: absolute;
+  font-size: 75%;
+  color: $timestamp-color;
+  right: 1rem;
+  bottom: 0.6rem;
+}
+
+input[type="submit"]{
+  font: 75% $font-stack;
+  color: $text-color;
+  background-color: $button-color;
+  border: 0;
+  margin: 0.2rem;
+  float: left;
+  @include bg-color-transition();
+}
+
+input[type="submit"]:hover{
+  background-color: $button-highlight-color;
+}

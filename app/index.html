@@ -2,10 +2,6 @@
   <head>
     <meta charset="UTF-8">
     <title>Leike</title>
-    <link rel="stylesheet" type="text/css" href="build/css/style.css">
-    <!--<link rel="stylesheet" href="../node_modules/highlight.js/styles/default.css">
-    <script src="../node_modules/highlight.js/lib/highlight.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>-->
   </head>
   <body>
     <header>
@@ -19,7 +15,7 @@
     </header>
     <div id="faq">
       <h2>Hello there!</h2>
-      <p>This here is Leike, an open-source clipboard utility by Ville Talonpoika, written in CoffeeScript & SASS, using Electron & Vue.js.</p>
+      <p>This here is Leike, an open-source clipboard utility developed and maintained by Ville Talonpoika, written in CoffeeScript & SASS, using Electron & Vue.js.</p>
       <p>The app logs all text and images entering the clipboard into memory and saves the images into a <a href="#" onclick="openFilePath()">folder</a>. If an image is deleted from the list, the file is deleted as well.</p>
       <p>The app keeps running in the background and can be closed from the tray icon.</p>
       <p>More info at the <a href="#" onclick="openLinkExternally('http://github.com/Nanofus/leike')">GitHub repository</a>.</p>
@@ -45,7 +41,10 @@
     </main>
 
     <script type="text/javascript" src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="build/config.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/app.js" charset="utf-8"></script>
-    <script type="text/javascript" src="build/ui-scripts.js" charset="utf-8"></script>
+    <script type="text/javascript" src="build/autolinker.js" charset="utf-8"></script>
+    <script type="text/javascript" src="build/faq.js" charset="utf-8"></script>
+    <script type="text/javascript" src="build/header.js" charset="utf-8"></script>
   </body>
 </html>

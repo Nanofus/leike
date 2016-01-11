@@ -1,0 +1,43 @@
+$header-height: 2rem;
+$button-width: 2rem;
+$button-height: 1.6rem;
+$button-margin: 0.2rem;
+
+header {
+  height: $header-height;
+  width: 100%;
+  background-color: $header-color;
+  -webkit-app-region: drag;
+  top: 0;
+  position: absolute;
+  z-index: 500;
+  @include shadow();
+  .window-button {
+    float: right;
+    margin: $button-margin $button-margin;
+    width: $button-width;
+    height: $button-height;
+    @include bg-color-transition();
+    -webkit-app-region: no-drag;
+    background-color: $header-button-normal;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    &:hover {
+      background-color: $header-button-hover;
+    }
+  }
+  #close {
+    margin-right: $button-margin;
+    background-image: url("../../img/header/close.png");
+  }
+  #maximize {
+    background-image: url("../../img/header/maximize.png");
+  }
+  #minimize {
+    background-image: url("../../img/header/minimize.png");
+  }
+  #settings {
+    background-image: url("../../img/header/settings.png");
+  }
+}
