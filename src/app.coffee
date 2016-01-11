@@ -1,16 +1,15 @@
+# Requirements
 remote = require('remote')
 clipboard = remote.require('clipboard')
 fs = remote.require('fs-extra')
 shell = remote.require('shell')
 app = remote.require('electron').app;
-
 packageJson = require('../package.json');
 
-entries = new Array
-
+# Other values
 filePath = app.getPath('documents') + '/leike/'
 filePathBackslash = app.getPath('documents') + '\\leike\\'
-
+entries = new Array
 currentClipboard = clipboard.readImage().toPng().toString()
 
 openLinkExternally= (url) ->
