@@ -35,11 +35,17 @@ gulp.task('cleandist', function() {
 gulp.task('cleandist:win', function() {
     return del(['./builds/win']);
 });
+gulp.task('cleandist:win64', function() {
+    return del(['./builds/win64']);
+});
 gulp.task('cleandist:osx', function() {
     return del(['./builds/osx']);
 });
 gulp.task('cleandist:linux', function() {
     return del(['./builds/linux']);
+});
+gulp.task('cleandist:linux64', function() {
+    return del(['./builds/linux64']);
 });
 
 gulp.task('default', ['clean'], function() {

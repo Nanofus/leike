@@ -1,5 +1,5 @@
 {
-  "name": "leike",
+  "name": "Leike",
   "version": "0.3.0",
   "description": "",
   "author": "Ville Talonpoika",
@@ -10,12 +10,16 @@
     "build": "gulp && npm run pack",
     "clean": "gulp cleandist",
     "clean:win": "gulp cleandist:win",
+    "clean:win64": "gulp cleandist:win64",
     "clean:osx": "gulp cleandist:osx",
     "clean:linux": "gulp cleandist:linux",
-    "pack": "npm run clean && npm run pack:linux && npm run pack:win",
-    "pack:osx": "npm run clean:osx && electron-packager . \"Leike\" --out=builds/osx --platform=darwin --arch=all --version=0.36.1 --icon=app/img/icon.ico --ignore=\"./(builds|src|scss)\"",
-    "pack:win": "npm run clean:win && electron-packager . \"Leike\" --out=builds/win --platform=win32 --arch=all --version=0.36.1 --icon=app/img/icon.ico --version-string.CompanyName=\"Companyname\" --version-string.FileDescription=\"Leike\" --version-string.ProductName=\"Leike\" --version-string.OriginalFilename=\"Leike\" --version-string.LegalCopyright=\"(c) Ville Talonpoika 2015\" --ignore=\"./(builds|src|scss)\"",
-    "pack:linux": "npm run clean:linux && electron-packager . \"Leike\" --out=builds/linux --platform=linux --arch=all --version=0.36.1 --ignore=\"./(builds|src|scss)\""
+    "clean:linux64": "gulp cleandist:linux64",
+    "pack": "npm run clean && npm run pack:linux && npm run pack:linux64 && npm run pack:win && npm run pack:win64",
+    "pack:osx": "npm run clean:osx && electron-packager . \"Leike\" --out=builds/osx --platform=darwin --arch=x64 --version=0.36.1 --icon=app/img/icon.ico --ignore=builds --ignore=src --ignore=scss",
+    "pack:win": "npm run clean:win && electron-packager . \"Leike\" --out=builds/win --platform=win32 --arch=ia32 --version=0.36.1 --icon=app/img/icon.ico --version-string.CompanyName=\"Ikuturso\" --version-string.FileDescription=\"Leike\" --version-string.ProductName=\"Leike\" --version-string.OriginalFilename=\"Leike\" --version-string.LegalCopyright=\"(c) Ville Talonpoika 2015\" --ignore=builds --ignore=src --ignore=scss",
+    "pack:win64": "npm run clean:win64 && electron-packager . \"Leike\" --out=builds/win64 --platform=win32 --arch=x64 --version=0.36.1 --icon=app/img/icon.ico --version-string.CompanyName=\"Ikuturso\" --version-string.FileDescription=\"Leike\" --version-string.ProductName=\"Leike\" --version-string.OriginalFilename=\"Leike\" --version-string.LegalCopyright=\"(c) Ville Talonpoika 2015\" --ignore=builds --ignore=src --ignore=scss",
+    "pack:linux": "npm run clean:linux && electron-packager . \"Leike\" --out=builds/linux --platform=linux --arch=ia32 --version=0.36.1 --ignore=builds --ignore=src --ignore=scss",
+    "pack:linux64": "npm run clean:linux64 && electron-packager . \"Leike\" --out=builds/linux64 --platform=linux --arch=x64 --version=0.36.1 --ignore=builds --ignore=src --ignore=scss"
   },
   "repository": {
     "type": "git",

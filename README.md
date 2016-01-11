@@ -1,5 +1,6 @@
 # ![leike](https://raw.githubusercontent.com/Nanofus/leike/master/app/img/icon-32px.png "leike") leike
 [![Dependency Status](https://david-dm.org/Nanofus/leike.svg)](https://david-dm.org/Nanofus/leike) [![devDependency Status](https://david-dm.org/Nanofus/leike/dev-status.svg)](https://david-dm.org/Nanofus/leike#info=devDependencies)
+[![Github All Releases](https://img.shields.io/github/downloads/Nanofus/leike/total.svg)]()
 
 A clipboard management utility, using [Electron](https://github.com/atom/electron) & [Vue.js](https://github.com/vuejs/vue). Written in [CoffeeScript](https://github.com/jashkenas/coffeescript) & [SASS](https://github.com/sass/sass). Works on Windows and Ubuntu, untested on OSX and other flavors of Linux.
 

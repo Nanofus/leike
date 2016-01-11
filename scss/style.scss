@@ -98,6 +98,10 @@ h1 {
   color: $background-color;
 }
 
+p {
+  font: 85% $font-stack;
+}
+
 a {
   color:#F64662;
   transition: all 0.2s;
