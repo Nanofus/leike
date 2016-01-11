@@ -11,7 +11,7 @@ $font-stack: OpenSans, sans-serif;
 $header-font: SansitaOne, sans-serif;
 
 $background-color: #F4F7F7;
-$area-color: #AACFD0;
+$area-color: darken(#AACFD0,15%);
 $text-color: #1F4E5F;
 $highlight-color: #79A8A9;
 
@@ -93,6 +93,14 @@ h1 {
   float: left;
   font: 130% $header-font;
   color: $background-color;
+}
+
+a {
+  color:#F64662;
+  transition: all 0.2s;
+  &:hover {
+    color:#C61951
+  }
 }
 
 ul {

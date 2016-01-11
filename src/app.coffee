@@ -68,6 +68,11 @@ vm = new Vue(
 
     deleteEntry: (entry) ->
       console.log("deleting " + entry)
+      if entry.type == 'image'
+        fs.unlink entry.content, (err) ->
+          if err
+            throw err
+          return
       index = @entries.indexOf(entry)
       if index > -1
         @entries.splice(index, 1)
