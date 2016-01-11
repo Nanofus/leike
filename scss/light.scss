@@ -1,11 +1,11 @@
-$background-color: #F4F7F7;
-$area-color: darken(#AACFD0,15%);
-$text-color: #1F4E5F;
-$highlight-color: #FFEA00;
+$background-color: #E8F5E9;
+$area-color: #4CAF50;
+$text-color: #000000;
+$highlight-color: #FFD740;
 $button-color: $area-color;
 $button-highlight-color: lighten($area-color,10%);
-$link-color: #F64662;
-$link-hover-color: #C61951;
+$link-color: #FF5722;
+$link-hover-color: #F4511E;
 $content-color: darken($background-color,10%);
 $timestamp-color: darken($background-color,40%);
 $header-color: $area-color;

@@ -13,38 +13,53 @@
        <div class="window-button" id="settings" v-on:click="openSettings()"></div>
       </div>
     </header>
-    <div id="faq">
-      <h2>Hello there!</h2>
-      <p>This here is Leike, an open-source clipboard utility developed and maintained by Ville Talonpoika, written in CoffeeScript & SASS, using Electron & Vue.js.</p>
-      <p>The app logs all text and images entering the clipboard into memory and saves the images into a <a href="#" onclick="openFilePath()">folder</a>. If an image is deleted from the list, the file is deleted as well.</p>
-      <p>The app keeps running in the background and can be closed from the tray icon.</p>
-      <p>More info at the <a href="#" onclick="openLinkExternally('http://github.com/Nanofus/leike')">GitHub repository</a>.</p>
-      <p>Version: {{packageJson.version}}</p>
-    </div>
     <main>
-      <input type="submit" name="submit" value="?" id="faq-button" onclick="showFaq()"/>
+      <div id="faq" class="window">
+        <h2>Hello there!</h2>
+        <p>This here is {{packageJson.name}}, an open-source clipboard utility developed and maintained by {{packageJson.author}}, written in CoffeeScript & SASS, using Electron & Vue.js.</p>
+        <p>The app logs all text and images entering the clipboard into memory and saves the images into a <a href="#" onclick="openFilePath()">folder</a>. If an image is deleted from the list, the file is deleted as well.</p>
+        <p>The app keeps running in the background and can be closed from the tray icon.</p>
+        <p>More info at the <a href="#" onclick="openLinkExternally('http://github.com/Nanofus/leike')">GitHub repository</a>.</p>
+        <p>Version: {{packageJson.version}}</p>
+        <input type="submit" name="submit" value="Close" class="bottom-right large" onclick="showWindow('faq')"/>
+      </div>
+      <div id="config" class="window">
+        <div class="settings">
+          <input type="checkbox" v-model="configJson.debugEnabled">
+          <input type="text" v-model="configJson.style">
+          <input type="submit" value="Save" onclick="saveConfig()">
+        </div>
+        <input type="submit" name="submit" value="Close" class="bottom-right large" onclick="showWindow('config')"/>
+      </div>
+      <input type="submit" name="submit" value="?" id="faq-button" onclick="showWindow('faq')"/>
       <div id="content">
         <ul id="entry-list">
           <li v-for="entry in entries">
-            <div v-if="entry.type == 'text'">
-              <p class="entry-content">{{ entry.content }}</p>
+            <div class="entry-area">
+              <div v-if="entry.type == 'text'">
+                <p class="entry-content">{{ entry.content }}</p>
+              </div>
+              <div v-if="entry.type == 'image'">
+                <div class="entry-content"><img v-bind:src="entry.content" class="transparent-background"></div>
+              </div>
             </div>
-            <div v-if="entry.type == 'image'">
-              <div class="entry-content"><img v-bind:src="entry.content" class="transparent-background"></div>
-              <input type="submit" name="submit" value="Open in folder" v-on:click="openInFileManager(entry.content)"/>
+            <div class="entry-footer">
+              <div v-if="entry.type == 'image'">
+                <input type="submit" name="submit" value="Open in folder" class="narrow" v-on:click="openInFileManager(entry.content)"/>
+              </div>
+              <input type="submit" name="submit" value="Delete" class="narrow" v-on:click="deleteEntry(entry)"/>
+              <div class="timestamp">{{ entry.timestamp }}</div>
             </div>
-            <input type="submit" name="submit" value="Delete" v-on:click="deleteEntry(entry)"/>
-            <div class="timestamp">{{ entry.timestamp }}</div>
           </li>
         </ul>
       </div>
     </main>
 
     <script type="text/javascript" src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="build/config.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/app.js" charset="utf-8"></script>
+    <script type="text/javascript" src="build/config.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/autolinker.js" charset="utf-8"></script>
-    <script type="text/javascript" src="build/faq.js" charset="utf-8"></script>
+    <script type="text/javascript" src="build/windows.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/header.js" charset="utf-8"></script>
   </body>
 </html>

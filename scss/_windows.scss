@@ -1,0 +1,25 @@
+#faq-button {
+  position: fixed;
+  bottom: 0.2rem;
+  right: 0.2rem;
+  z-index: 300;
+}
+
+.window {
+  position: absolute;
+  bottom: 4.5rem;
+  left: 5rem;
+  right: 5rem;
+  top: 6.5rem;
+  z-index: 200;
+  padding: 1rem;
+  display: none;
+  overflow-y: auto;
+  background-color: $background-color;
+  @include shadowDeep();
+  &.settings {
+    &input {
+      padding-bottom:0.2rem;
+    }
+  }
+}

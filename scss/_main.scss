@@ -1,6 +1,9 @@
 @mixin shadow() {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+@mixin shadowDeep() {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
 
 @mixin bg-color-transition() {
   transition: background-color 0.15s ease-out;
@@ -8,9 +11,9 @@
 
 @import 'fonts';
 @import 'header';
-@import 'faq';
+@import 'windows';
 
-$image-height: 5rem;
+$image-height: 7rem;
 
 body {
   margin: 0;
@@ -68,27 +71,33 @@ ul {
 }
 li {
   position: relative;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: $area-color;
-  padding: 0.6rem;
-  padding-bottom: 2rem;
+  padding: 0;
+  padding-bottom: 1.6rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  @include shadow();
 }
 
 .entry-content {
   white-space: pre-wrap;
   background-color: $content-color;
+  margin: 0;
   padding: 0.6rem;
   & img {
-    height: $image-height;
+    padding: 0;
+    margin: 0;
+    max-height: $image-height;
   }
 }
+
 .timestamp {
-  position: absolute;
+  float: right;
+  padding-right: 1rem;
   font-size: 75%;
+  padding-top: 0.3rem;
   color: $timestamp-color;
-  right: 1rem;
-  bottom: 0.6rem;
 }
 
 input[type="submit"]{
@@ -99,6 +108,18 @@ input[type="submit"]{
   margin: 0.2rem;
   float: left;
   @include bg-color-transition();
+  padding: 0.25rem 0.5rem;
+  &.large {
+    padding: 0.5rem 1rem;
+  }
+  &.narrow {
+    padding: 0.05rem 1rem;
+  }
+  &.bottom-right {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
 }
 
 input[type="submit"]:hover{

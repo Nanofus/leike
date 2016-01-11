@@ -16,7 +16,18 @@ openLinkExternally= (url) ->
   shell.openExternal(url)
 
 openFilePath= ->
-  shell.showItemInFolder(filePath)
+  shell.showItemInFolder(filePathBackslash)
+
+readJson= (path) ->
+  fs.readJson path, (err, obj) ->
+    return obj
+
+readJsonSync= (path) ->
+  obj = fs.readJsonSync(path, throws: false)
+  return obj
+
+writeJsonSync= (data, path) ->
+  fs.writeJsonSync path, data
 
 vm = new Vue(
   el: '#entry-list'
@@ -27,11 +38,11 @@ vm = new Vue(
         if err
           throw err
         return
-      fs.writeFile filePath + name + '.png', data, (err) ->
+      fs.writeFile filePath + "/images/" + name + '.png', data, (err) ->
         if err
           throw err
         return
-      filePathBackslash + name + '.png'
+      filePathBackslash + "/images/" + name + '.png'
 
     saveToClipboard: (type) ->
       time = new Date

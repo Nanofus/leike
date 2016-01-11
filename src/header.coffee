@@ -17,6 +17,5 @@ header = new Vue(
       remote.getCurrentWindow().minimize()
 
     openSettings: ->
-      # Open dev tools
-      remote.getCurrentWindow().webContents.openDevTools();
+      showWindow('config')
 )
