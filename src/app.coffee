@@ -1,6 +1,5 @@
 remote = require('remote')
 clipboard = remote.require('clipboard')
-currentClipboard = clipboard.readText()
 fs = remote.require('fs-extra')
 shell = remote.require('shell')
 app = remote.require('electron').app;
@@ -11,6 +10,8 @@ entries = new Array
 
 filePath = app.getPath('documents') + '/leike/'
 filePathBackslash = app.getPath('documents') + '\\leike\\'
+
+currentClipboard = clipboard.readImage().toPng().toString()
 
 openLinkExternally= (url) ->
   shell.openExternal(url)
@@ -64,10 +65,10 @@ vm = new Vue(
         return
       filePathBackslash + name + '.png'
 
-    saveToClipboard: ->
+    saveToClipboard: (type) ->
       time = new Date
-      if !remote.getCurrentWindow().isFocused()
-        if clipboard.readText() != currentClipboard and clipboard.readText() != ''
+      if type == 'text'
+        if !remote.getCurrentWindow().isFocused()
           clipboardData =
             content: clipboard.readText()
             type: 'text'
@@ -76,15 +77,17 @@ vm = new Vue(
           #console.log(clipboardData)
           currentClipboard = clipboard.readText()
           entries.unshift clipboardData
-        else if clipboard.readImage().toPng().toString() != currentClipboard and !clipboard.readImage().isEmpty()
-          path = @writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
-          clipboardData =
-            content: path
-            type: 'image'
-            timestamp: time
-          currentClipboard = clipboard.readImage().toPng().toString()
-          #console.log("Data is an image! - " + clipboardData);
-          entries.unshift clipboardData
+        else
+          currentClipboard = clipboard.readText()
+      else if type == 'image'
+        path = @writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
+        clipboardData =
+          content: path
+          type: 'image'
+          timestamp: time
+        currentClipboard = clipboard.readImage().toPng().toString()
+        #console.log("Data is an image! - " + clipboardData);
+        entries.unshift clipboardData
 
     openInFileManager: (path) ->
       #console.log("opening " + path)
@@ -103,8 +106,8 @@ vm = new Vue(
 )
 
 setInterval (->
-  if clipboard.readText() != currentClipboard
-    vm.saveToClipboard()
-    currentClipboard = clipboard.readText()
-  return
-), 20
+  if clipboard.readText() != currentClipboard and clipboard.readText() != ''
+    vm.saveToClipboard('text')
+  else if clipboard.readImage().toPng().toString() != currentClipboard and !clipboard.readImage().isEmpty()
+    vm.saveToClipboard('image')
+), 500

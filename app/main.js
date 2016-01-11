@@ -54,7 +54,7 @@ app.on('ready', function () {
     ]);
     appIcon.setToolTip('leike');
     appIcon.setContextMenu(contextMenu);
-    appIcon.addListener('clicked', function () {
+    appIcon.addListener('click', function () {
       mainWindow.show();
     });
 });
