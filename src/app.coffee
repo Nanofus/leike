@@ -48,8 +48,8 @@ vm = new Vue(
           content: clipboard.readText()
           type: 'text'
           timestamp: time
-        console.log("Data is text!")
-        console.log(clipboardData)
+        #console.log("Data is text!")
+        #console.log(clipboardData)
         currentClipboard = clipboard.readText()
         entries.unshift clipboardData
       else if clipboard.readImage().toPng().toString() != currentClipboard and !clipboard.readImage().isEmpty()
@@ -72,6 +72,11 @@ vm = new Vue(
       if index > -1
         @entries.splice(index, 1)
 )
+
+openLinkExternally= (url) ->
+  console.log("opening in browser " + url)
+  shell.openExternal(url)
+
 
 setInterval (->
   if clipboard.readText() != currentClipboard

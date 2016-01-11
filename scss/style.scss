@@ -50,6 +50,7 @@ header {
   top: 0;
   position: absolute;
   z-index: 500;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   .window-button {
     float: right;
     margin: $button-margin $button-margin;
@@ -95,14 +96,15 @@ h1 {
 }
 
 ul {
+  margin: 0;
   padding-left: 0;
   list-style: none;
 }
 li {
   position: relative;
-  border-style: solid;
-  border-width: 1px;
-  border-color: $area-color;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: $area-color;
   padding: 0.6rem;
   padding-bottom: 2rem;
 }
