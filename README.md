@@ -13,7 +13,7 @@ The latest build is available on the [releases](https://github.com/Nanofus/leike
 
 ## Building
 
-How to run & build:
+Running dev version:
 
 ```sh
 # Install dependencies
@@ -24,18 +24,25 @@ gulp
 
 # Run
 npm start
+```
+
+Building dist version:
+
+```sh
+# Install dependencies
+npm install
 
 # Build standalone Windows and Linux apps into ./dist
-npm run pack
+npm run build
 ```
 
 Other configured scripts:
 
 ```sh
-# Clean compiled files
+# Clean compiled stylesheets & scripts
 gulp clean
 
-# Clean compiled standalone apps
+# Clean compiled dist versions
 npm run clean
 
 # Watch for changes in stylesheets & scripts

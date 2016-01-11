@@ -7,6 +7,7 @@
   "main": "app/main.js",
   "scripts": {
     "start": "electron ./app/main.js",
+    "build": "gulp && npm run pack",
     "clean": "gulp cleandist",
     "clean:win": "gulp cleandist:win",
     "clean:osx": "gulp cleandist:osx",
