@@ -3,7 +3,7 @@ A clipboard management utility, using [Electron](https://github.com/atom/electro
 
 ## Features
 
-The application runs in the background and records all text and images that enter the clipboard. The text is saved into memory and images copied into a folder (currently desktop). Via the main window the user can view their clipboard log.
+The application runs in the background and records all text and images that enter the clipboard. The text is saved into memory and images copied into a backup folder. The user can view their clipboard log via the main window.
 
 The application can be quit by right-clicking the tray icon.
 
