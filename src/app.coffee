@@ -65,24 +65,25 @@ vm = new Vue(
 
     saveToClipboard: ->
       time = new Date
-      if clipboard.readText() != currentClipboard and clipboard.readText() != ''
-        clipboardData =
-          content: clipboard.readText()
-          type: 'text'
-          timestamp: time
-        #console.log("Data is text!")
-        #console.log(clipboardData)
-        currentClipboard = clipboard.readText()
-        entries.unshift clipboardData
-      else if clipboard.readImage().toPng().toString() != currentClipboard and !clipboard.readImage().isEmpty()
-        path = @writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
-        clipboardData =
-          content: path
-          type: 'image'
-          timestamp: time
-        currentClipboard = clipboard.readImage().toPng().toString()
-        #console.log("Data is an image! - " + clipboardData);
-        entries.unshift clipboardData
+      if !remote.getCurrentWindow().isFocused()
+        if clipboard.readText() != currentClipboard and clipboard.readText() != ''
+          clipboardData =
+            content: clipboard.readText()
+            type: 'text'
+            timestamp: time
+          #console.log("Data is text!")
+          #console.log(clipboardData)
+          currentClipboard = clipboard.readText()
+          entries.unshift clipboardData
+        else if clipboard.readImage().toPng().toString() != currentClipboard and !clipboard.readImage().isEmpty()
+          path = @writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
+          clipboardData =
+            content: path
+            type: 'image'
+            timestamp: time
+          currentClipboard = clipboard.readImage().toPng().toString()
+          #console.log("Data is an image! - " + clipboardData);
+          entries.unshift clipboardData
 
     openInFileManager: (path) ->
       #console.log("opening " + path)

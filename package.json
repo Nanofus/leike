@@ -10,7 +10,7 @@
     "clean": "gulp cleandist",
     "pack": "npm run clean && npm run pack:linux && npm run pack:win",
     "pack:osx": "npm run clean && electron-packager . \"Leike\" --out=dist/osx --platform=darwin --arch=all --version=0.36.1 --icon=app/img/icon.ico",
-    "pack:win": "npm run clean && electron-packager . \"Leike\" --out=dist/win --platform=win32 --arch=all --version=0.36.1 --icon=app/img/icon.ico",
+    "pack:win": "npm run clean && electron-packager . \"Leike\" --out=dist/win --platform=win32 --arch=all --version=0.36.1 --icon=app/img/icon.ico --version-string.CompanyName=\"Companyname\" --version-string.FileDescription=\"Leike\" --version-string.ProductName=\"Leike\" --version-string.OriginalFilename=\"Leike\" --version-string.LegalCopyright=\"(c) Ville Talonpoika 2015\"",
     "pack:linux": "npm run clean && electron-packager . \"Leike\" --out=dist/linux --platform=linux --arch=all --version=0.36.1"
   },
   "repository": {
