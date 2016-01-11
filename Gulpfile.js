@@ -20,28 +20,6 @@ gulp.task('coffee', function() {
     .pipe(gulp.dest('./app/build'));
 });
 
-gulp.task('electron', function() {
-    gulp.src("")
-    .pipe(electron({
-        src: './app',
-        packageJson: packageJson,
-        release: './build',
-        cache: './cache',
-        version: 'v0.36.3',
-        packaging: true,
-        platforms: ['win32-ia32'],
-        platformResources: {
-            win: {
-                "version-string": packageJson.version,
-                "file-version": packageJson.version,
-                "product-version": packageJson.version,
-                "icon": './app/img/icon.ico'
-            }
-        }
-    }))
-    .pipe(gulp.dest(""));
-});
-
 gulp.task('watch', function() {
   gulp.watch('./scss/**/*.scss', ['sass']);
   gulp.watch('./src/*.coffee', ['coffee']);
@@ -52,7 +30,16 @@ gulp.task('clean', function() {
 });
 
 gulp.task('cleandist', function() {
-    return del(['./dist']);
+    return del(['./builds']);
+});
+gulp.task('cleandist:win', function() {
+    return del(['./builds/win']);
+});
+gulp.task('cleandist:osx', function() {
+    return del(['./builds/osx']);
+});
+gulp.task('cleandist:linux', function() {
+    return del(['./builds/linux']);
 });
 
 gulp.task('default', ['clean'], function() {

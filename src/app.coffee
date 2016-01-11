@@ -9,7 +9,8 @@ packageJson = require('../package.json');
 
 entries = new Array
 
-filePath = app.getPath('documents') + '\\leike\\'
+filePath = app.getPath('documents') + '/leike/'
+filePathBackslash = app.getPath('documents') + '\\leike\\'
 
 openLinkExternally= (url) ->
   shell.openExternal(url)
@@ -61,7 +62,7 @@ vm = new Vue(
         if err
           throw err
         return
-      filePath + name + '.png'
+      filePathBackslash + name + '.png'
 
     saveToClipboard: ->
       time = new Date

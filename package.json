@@ -8,10 +8,13 @@
   "scripts": {
     "start": "electron ./app/main.js",
     "clean": "gulp cleandist",
+    "clean:win": "gulp cleandist:win",
+    "clean:osx": "gulp cleandist:osx",
+    "clean:linux": "gulp cleandist:linux",
     "pack": "npm run clean && npm run pack:linux && npm run pack:win",
-    "pack:osx": "npm run clean && electron-packager . \"Leike\" --out=dist/osx --platform=darwin --arch=all --version=0.36.1 --icon=app/img/icon.ico",
-    "pack:win": "npm run clean && electron-packager . \"Leike\" --out=dist/win --platform=win32 --arch=all --version=0.36.1 --icon=app/img/icon.ico --version-string.CompanyName=\"Companyname\" --version-string.FileDescription=\"Leike\" --version-string.ProductName=\"Leike\" --version-string.OriginalFilename=\"Leike\" --version-string.LegalCopyright=\"(c) Ville Talonpoika 2015\"",
-    "pack:linux": "npm run clean && electron-packager . \"Leike\" --out=dist/linux --platform=linux --arch=all --version=0.36.1"
+    "pack:osx": "npm run clean:osx && electron-packager . \"Leike\" --out=builds/osx --platform=darwin --arch=all --version=0.36.1 --icon=app/img/icon.ico --ignore=\"./(builds|src|scss)\"",
+    "pack:win": "npm run clean:win && electron-packager . \"Leike\" --out=builds/win --platform=win32 --arch=all --version=0.36.1 --icon=app/img/icon.ico --version-string.CompanyName=\"Companyname\" --version-string.FileDescription=\"Leike\" --version-string.ProductName=\"Leike\" --version-string.OriginalFilename=\"Leike\" --version-string.LegalCopyright=\"(c) Ville Talonpoika 2015\" --ignore=\"./(builds|src|scss)\"",
+    "pack:linux": "npm run clean:linux && electron-packager . \"Leike\" --out=builds/linux --platform=linux --arch=all --version=0.36.1 --ignore=\"./(builds|src|scss)\""
   },
   "repository": {
     "type": "git",
