@@ -6,19 +6,19 @@ shell = remote.require('shell')
 app = remote.require('electron').app;
 packageJson = require('../package.json')
 
-remote.getCurrentWindow().webContents.openDevTools()
-
 # Other values
-filePath = app.getPath('home') + '/leike'
-filePathBackslash = app.getPath('home') + '\\leike'
+filePath = app.getPath('home') + '\\LeikeData\\'
+imagePath = filePath + "images\\"
+textPath = filePath + "data\\"
 entries = new Array
-currentClipboard = clipboard.readImage().toPng().toString()
+currentClipboard = clipboard.readImage().toJpeg(0).toString()
+console.log(currentClipboard)
 
 openLinkExternally= (url) ->
   shell.openExternal(url)
 
 openFilePath= ->
-  shell.showItemInFolder(filePathBackslash)
+  shell.showItemInFolder(filePath)
 
 readJson= (path) ->
   fs.readJson path, (err, obj) ->
@@ -31,24 +31,35 @@ readJsonSync= (path) ->
 writeJsonSync= (data, path) ->
   fs.writeJsonSync path, data
 
-vm = new Vue(
+entryList = new Vue(
   el: '#entry-list'
   data: entries: entries
   methods:
     writeImage: (data, name) ->
-      fs.ensureDir filePath, (err) ->
+      fs.ensureDir imagePath, (err) ->
         if err
-          console.log("Ensuer failed")
           throw err
         return
-      writePath = filePathBackslash + "\\images\\" + name + '.png'
-      fs.writeFile writePath, data, (err) ->
+      fs.writeFile imagePath + name + '.png', data, (err) ->
         if err
-          console.log("FAILLL " + err)
           throw err
         return
-      console.log("wrote image")
-      filePathBackslash + "\\images\\" + name + '.png'
+      imagePath + name + '.png'
+
+    writeData: (data, name) ->
+      fs.ensureDir textPath, (err) ->
+        if err
+          throw err
+        return
+      fs.writeJson textPath + name + '.json', data, (err) ->
+        if err
+          throw err
+        return
+      textPath + name + '.json'
+
+    exportJson: ->
+      path = @writeData(entries, time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
+      @openInFileManager(path)
 
     saveToClipboard: (type) ->
       time = new Date
@@ -70,7 +81,7 @@ vm = new Vue(
           content: path
           type: 'image'
           timestamp: time
-        currentClipboard = clipboard.readImage().toPng().toString()
+        currentClipboard = clipboard.readImage().toJpeg(0).toString()
         #console.log("Data is an image! - " + clipboardData);
         entries.unshift clipboardData
 
@@ -97,9 +108,11 @@ vm = new Vue(
 setInterval (->
   readText = clipboard.readText()
   if readText!= currentClipboard and readText != ''
-    vm.saveToClipboard('text')
+    entryList.saveToClipboard('text')
   else
     readImage = clipboard.readImage()
-    if readImage.toPng().toString() != currentClipboard and !readImage.isEmpty()
-      vm.saveToClipboard('image')
+    if readImage.toJpeg(0).toString() != currentClipboard
+      if !readImage.isEmpty()
+        entryList.saveToClipboard('image')
+
 ), 250
