@@ -7,7 +7,6 @@ fs = remote.require('fs-extra')
 shell = remote.require('shell')
 app = remote.require('electron').app;
 packageJson = require('../package.json')
-configJson = require('../default_config.json') # Overridden by config.js
 
 # Other values
 filePath = app.getPath('home') + '\\LeikeData\\'

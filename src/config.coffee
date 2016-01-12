@@ -1,11 +1,3 @@
-configWindow = new Vue(
-  el: '#config'
-  data: {
-    packageJson: packageJson,
-    configJson: configJson
-  }
-)
-
 checkIfDevVersion= ->
   if app.getAppPath().indexOf("electron-prebuilt") > -1
     console.log("Running dev version")
@@ -46,4 +38,13 @@ loadCss= (url) ->
 
 checkIfDevVersion()
 setupConfig()
+configJson = require(configPath)
 reloadConfig()
+
+configWindow = new Vue(
+  el: '#config'
+  data: {
+    packageJson: packageJson,
+    configJson: configJson
+  }
+)

@@ -1,6 +1,3 @@
-# Requirements
-remote = require('remote')
-
 header = new Vue(
   el: 'header'
   methods:
