@@ -10,7 +10,6 @@ packageJson = require('../package.json')
 filePath = app.getPath('home') + '\\LeikeData\\'
 imagePath = filePath + "images\\"
 textPath = filePath + "data\\"
-entries = new Array
 currentClipboard = clipboard.readImage().toJpeg(0).toString()
 
 openLinkExternally= (url) ->
@@ -35,9 +34,19 @@ exportJson= ->
   path = entryList.writeData(entryList.entries, time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
   entryList.openInFileManager(path)
 
+clearEntries= ->
+  entryList.entries = new Array
+
+deleteAllData= ->
+  clearEntries()
+  fs.remove filePath, (err) ->
+    if err
+      throw err
+    return
+
 entryList = new Vue(
   el: '#entry-list'
-  data: entries: entries
+  data: entries: new Array
   methods:
     writeImage: (data, name) ->
       fs.ensureDir imagePath, (err) ->
@@ -72,7 +81,7 @@ entryList = new Vue(
           #console.log("Data is text!")
           #console.log(clipboardData)
           currentClipboard = clipboard.readText()
-          entries.unshift clipboardData
+          @entries.unshift clipboardData
         else
           currentClipboard = clipboard.readText()
       else if type == 'image'
@@ -83,7 +92,7 @@ entryList = new Vue(
           timestamp: time
         currentClipboard = clipboard.readImage().toJpeg(0).toString()
         #console.log("Data is an image! - " + clipboardData);
-        entries.unshift clipboardData
+        @entries.unshift clipboardData
 
     openInFileManager: (path) ->
       #console.log("opening " + path)
