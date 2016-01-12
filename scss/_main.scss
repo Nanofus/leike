@@ -101,6 +101,7 @@ li {
   margin: 0;
   padding: 0.6rem;
   max-height: 20rem;
+  overflow-x: visible;
   overflow-y: auto;
   & img {
     padding: 0;
@@ -110,10 +111,12 @@ li {
 }
 
 .timestamp {
-  float: right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
   padding-right: 1rem;
   font-size: 75%;
-  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
   color: $timestamp-color;
 }
 

@@ -1,63 +1,7 @@
-# Requirements
-remote = require('remote')
-clipboard = remote.require('clipboard')
-fs = remote.require('fs-extra')
-shell = remote.require('shell')
-app = remote.require('electron').app;
-packageJson = require('../package.json')
-
-remote.getCurrentWindow().webContents.openDevTools()
-
-# Other values
-filePath = app.getPath('home') + '\\LeikeData\\'
-imagePath = filePath + "images\\"
-textPath = filePath + "data\\"
 currentClipboard = clipboard.readImage().toJpeg(0).toString()
-
-openLinkExternally= (url) ->
-  shell.openExternal(url)
-
-openFilePath= ->
-  shell.showItemInFolder(filePath)
-
-fileExists= (path) ->
-  try
-    fs.statSync path
-  catch err
-    return false
-  return true
-
-copyFileSync= (from, to) ->
-  try
-    fs.copySync from, to
-  catch err
-    console.error 'File copy failed: ' + err.message
-
-readJson= (path) ->
-  fs.readJson path, (err, obj) ->
-    return obj
-
-readJsonSync= (path) ->
-  obj = fs.readJsonSync(path, throws: false)
-  return obj
-
-writeJsonSync= (data, path) ->
-  fs.writeJsonSync path, data
-
-exportJson= ->
-  time = new Date
-  path = entryList.writeData(entryList.entries, time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
-  entryList.openInFileManager(path)
 
 clearEntries= ->
   entryList.entries = new Array
-
-deleteAllData= ->
-  clearEntries()
-  fs.remove filePath, (err) ->
-    if err
-      throw err
-    return
 
 entryList = new Vue(
   el: '#entry-list'
@@ -108,10 +52,6 @@ entryList = new Vue(
         currentClipboard = clipboard.readImage().toJpeg(0).toString()
         #console.log("Data is an image! - " + clipboardData);
         @entries.unshift clipboardData
-
-    openInFileManager: (path) ->
-      #console.log("opening " + path)
-      shell.showItemInFolder(path)
 
     copyEntry: (entry) ->
       if entry.type == 'text'
