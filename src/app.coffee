@@ -9,8 +9,8 @@ packageJson = require('../package.json')
 remote.getCurrentWindow().webContents.openDevTools()
 
 # Other values
-filePath = app.getPath('documents') + '/leike/'
-filePathBackslash = app.getPath('documents') + '\\leike\\'
+filePath = app.getPath('home') + '/leike'
+filePathBackslash = app.getPath('home') + '\\leike'
 entries = new Array
 currentClipboard = clipboard.readImage().toPng().toString()
 
@@ -38,13 +38,17 @@ vm = new Vue(
     writeImage: (data, name) ->
       fs.ensureDir filePath, (err) ->
         if err
+          console.log("Ensuer failed")
           throw err
         return
-      fs.writeFile filePath + "/images/" + name + '.png', data, (err) ->
+      writePath = filePathBackslash + "\\images\\" + name + '.png'
+      fs.writeFile writePath, data, (err) ->
         if err
+          console.log("FAILLL " + err)
           throw err
         return
-      filePathBackslash + "/images/" + name + '.png'
+      console.log("wrote image")
+      filePathBackslash + "\\images\\" + name + '.png'
 
     saveToClipboard: (type) ->
       time = new Date
@@ -73,6 +77,10 @@ vm = new Vue(
     openInFileManager: (path) ->
       #console.log("opening " + path)
       shell.showItemInFolder(path)
+
+    copyEntry: (entry) ->
+      if entry.type == 'text'
+        clipboard.writeText(entry.content)
 
     deleteEntry: (entry) ->
       #console.log("deleting " + entry)

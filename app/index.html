@@ -44,10 +44,13 @@
               </div>
             </div>
             <div class="entry-footer">
+              <input type="submit" name="submit" value="Delete" class="narrow" v-on:click="deleteEntry(entry)"/>
+              <div v-if="entry.type == 'text'">
+                <input type="submit" name="submit" value="Copy" class="narrow" v-on:click="copyEntry(entry)"/>
+              </div>
               <div v-if="entry.type == 'image'">
                 <input type="submit" name="submit" value="Open in folder" class="narrow" v-on:click="openInFileManager(entry.content)"/>
               </div>
-              <input type="submit" name="submit" value="Delete" class="narrow" v-on:click="deleteEntry(entry)"/>
               <div class="timestamp">{{ entry.timestamp }}</div>
             </div>
           </li>
