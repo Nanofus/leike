@@ -1,6 +1,6 @@
 # Requirements
 packageJson = require('../package.json')
-configJson = require('../config.json')
+configJson = require('../default_config.json')
 remote = require('remote')
 app = remote.require('electron').app
 if app.getAppPath().indexOf("electron-prebuilt") > -1
@@ -8,9 +8,14 @@ if app.getAppPath().indexOf("electron-prebuilt") > -1
   devVersion = true
 
 if devVersion
-  configPath = "config.json"
+  defaultConfigPath = "default_config.json"
 else
-  configPath = "resources/app/config.json"
+  defaultConfigPath = "resources/app/default_config.json"
+
+configPath = filePath + "config.json"
+if !fileExists(configPath)
+  copyFileSync(defaultConfigPath,configPath)
+else
 
 configWindow = new Vue(
   el: '#config'

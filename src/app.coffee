@@ -6,6 +6,8 @@ shell = remote.require('shell')
 app = remote.require('electron').app;
 packageJson = require('../package.json')
 
+remote.getCurrentWindow().webContents.openDevTools()
+
 # Other values
 filePath = app.getPath('home') + '\\LeikeData\\'
 imagePath = filePath + "images\\"
@@ -17,6 +19,19 @@ openLinkExternally= (url) ->
 
 openFilePath= ->
   shell.showItemInFolder(filePath)
+
+fileExists= (path) ->
+  try
+    fs.statSync path
+  catch err
+    return false
+  return true
+
+copyFileSync= (from, to) ->
+  try
+    fs.copySync from, to
+  catch err
+    console.error 'File copy failed: ' + err.message
 
 readJson= (path) ->
   fs.readJson path, (err, obj) ->
