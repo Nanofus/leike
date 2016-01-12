@@ -1,8 +1,16 @@
 # Requirements
 packageJson = require('../package.json')
-console.log(packageJson)
 configJson = require('../config.json')
-console.log(configJson)
+remote = require('remote')
+app = remote.require('electron').app
+if app.getAppPath().indexOf("electron-prebuilt") > -1
+  console.log("Running dev version")
+  devVersion = true
+
+if devVersion
+  configPath = "config.json"
+else
+  configPath = "resources/app/config.json"
 
 configWindow = new Vue(
   el: '#config'
@@ -12,18 +20,16 @@ configWindow = new Vue(
   }
 )
 
-readConfig= ->
-  configJson = readJsonSync("config.json")
+reloadConfig= ->
+  configJson = readJsonSync(configPath)
   loadCss("build/css/" + configJson.style + ".css")
   if configJson.debugEnabled
     remote.getCurrentWindow().webContents.openDevTools()
   return
 
 saveConfig= ->
-  console.log("Before: Style: "+configWindow.configJson.style+", debug: "+configWindow.configJson.debugEnabled)
-  writeJsonSync(configWindow.configJson,"config.json")
-  readConfig()
-  console.log("After: Style: "+configJson.style+", debug: "+configJson.debugEnabled)
+  writeJsonSync(configWindow.configJson,configPath)
+  reloadConfig()
   return
 
 loadCss= (url) ->
@@ -35,4 +41,4 @@ loadCss= (url) ->
   head.appendChild link
   return link
 
-readConfig()
+reloadConfig()

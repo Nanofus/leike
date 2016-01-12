@@ -6,6 +6,8 @@ shell = remote.require('shell')
 app = remote.require('electron').app;
 packageJson = require('../package.json')
 
+remote.getCurrentWindow().webContents.openDevTools()
+
 # Other values
 filePath = app.getPath('documents') + '/leike/'
 filePathBackslash = app.getPath('documents') + '\\leike\\'
