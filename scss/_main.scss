@@ -41,7 +41,8 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background-color: $scrollbar-handle-color;
-    border-radius: 1px;
+    border-color: $scrollbar-border-color;
+    border-radius: 2px;
 }
 
 .transparent-background {
@@ -99,6 +100,8 @@ li {
   background-color: $content-color;
   margin: 0;
   padding: 0.6rem;
+  max-height: 20rem;
+  overflow-y: auto;
   & img {
     padding: 0;
     margin: 0;
@@ -133,6 +136,10 @@ input[type="submit"]{
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+    &.close {
+      bottom: 0.5rem;
+      right: 0.5rem;
+    }
   }
 }
 

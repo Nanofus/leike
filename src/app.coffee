@@ -12,7 +12,6 @@ imagePath = filePath + "images\\"
 textPath = filePath + "data\\"
 entries = new Array
 currentClipboard = clipboard.readImage().toJpeg(0).toString()
-console.log(currentClipboard)
 
 openLinkExternally= (url) ->
   shell.openExternal(url)
@@ -30,6 +29,11 @@ readJsonSync= (path) ->
 
 writeJsonSync= (data, path) ->
   fs.writeJsonSync path, data
+
+exportJson= ->
+  time = new Date
+  path = entryList.writeData(entryList.entries, time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
+  entryList.openInFileManager(path)
 
 entryList = new Vue(
   el: '#entry-list'
@@ -56,10 +60,6 @@ entryList = new Vue(
           throw err
         return
       textPath + name + '.json'
-
-    exportJson: ->
-      path = @writeData(entries, time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
-      @openInFileManager(path)
 
     saveToClipboard: (type) ->
       time = new Date

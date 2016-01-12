@@ -9,6 +9,7 @@ $link-hover-color: #DD2C00;
 $content-color: darken($background-color,10%);
 $scrollbar-color: $background-color;
 $scrollbar-handle-color: darken($background-color,10%);
+$scrollbar-border-color: darken($scrollbar-handle-color,10%);
 $timestamp-color: darken($background-color,40%);
 $header-color: $area-color;
 $header-button-normal: $area-color;
