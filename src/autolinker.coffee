@@ -4,7 +4,7 @@ autolinker = new Autolinker({newWindow: false, stripPrefix: false})
 observer = new MutationObserver (mutations) ->
   for i in [0...mutations.length]
     for j in [0...mutations[i].addedNodes.length]
-      if mutations[i].addedNodes[j].tagName == "LI"
+      if mutations[i].addedNodes[j].className == "entry"
         autolink()
 
 observer.observe(document.getElementById('entry-list'), {childList: true, subtree: true})

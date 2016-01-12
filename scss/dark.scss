@@ -7,6 +7,8 @@ $button-highlight-color: #FF6E40;
 $link-color: #FF3D00;
 $link-hover-color: #DD2C00;
 $content-color: darken($background-color,10%);
+$scrollbar-color: $background-color;
+$scrollbar-handle-color: darken($background-color,10%);
 $timestamp-color: darken($background-color,40%);
 $header-color: $area-color;
 $header-button-normal: $area-color;
