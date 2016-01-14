@@ -5,7 +5,6 @@ var sass = require('gulp-sass');
 var coffee = require('gulp-coffee');
 var gutil = require('gulp-util');
 var del = require('del');
-var electron = require('gulp-electron');
 var packageJson = require('./package.json');
 
 gulp.task('sass', function () {

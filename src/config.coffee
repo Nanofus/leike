@@ -1,9 +1,7 @@
-checkIfDevVersion= ->
+setupConfig= ->
   if app.getAppPath().indexOf("electron-prebuilt") > -1
     console.log("Running dev version")
     devVersion = true
-
-setupConfig= ->
   if devVersion
     defaultConfigPath = "default_config.json"
   else
@@ -36,7 +34,6 @@ loadCss= (url) ->
 
 # Config initialization
 
-checkIfDevVersion()
 setupConfig()
 configJson = require(configPath)
 reloadConfig()

@@ -1,5 +1,6 @@
 # Requirements
 remote = require('remote')
+remote.getCurrentWindow().webContents.openDevTools()
 clipboard = remote.require('clipboard')
 fs = remote.require('fs-extra')
 shell = remote.require('shell')
