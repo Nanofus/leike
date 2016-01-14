@@ -10,6 +10,15 @@ The application runs in the background and records all text and images that ente
 
 The application can be quit by right-clicking the tray icon.
 
+## Upcoming features
+
+* Autosave
+* Changeable data folder location
+* Image resizing & log improvements to limit memory usage
+* Optional sound effects
+* Bugfixes for Linux version
+* OSX version
+
 ## Downloads
 
 The latest build is available on the [releases](https://github.com/Nanofus/leike/releases/latest) page.
@@ -51,9 +60,3 @@ npm run clean
 # Watch for changes in stylesheets & scripts
 gulp watch
 ```
-
-## Todo
-
-* JSON autosave
-* JSON export
-* OSX version
