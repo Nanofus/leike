@@ -14,6 +14,7 @@ The application can be quit by right-clicking the tray icon.
 
 * Autosave
 * Changeable data folder location
+* Automatic updates
 * Image resizing & log improvements to limit memory usage
 * Optional sound effects
 * Bugfixes for Linux version
