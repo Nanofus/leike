@@ -5,7 +5,7 @@ clearEntries= ->
 
 entryList = new Vue(
   el: '#entry-list'
-  data: entries: new Array
+  data: { entries: new Array }
   methods:
     writeImage: (data, name) ->
       fs.ensureDir imagePath, (err) ->
@@ -17,6 +17,9 @@ entryList = new Vue(
           throw err
         return
       imagePath + name + '.png'
+
+    openInFileManager: (path) ->
+      openInFileManager(path)
 
     writeData: (data, name) ->
       fs.ensureDir textPath, (err) ->
@@ -69,7 +72,7 @@ entryList = new Vue(
         @entries.splice(index, 1)
 )
 
-setInterval (->
+checkForClipboardChanges= ->
   readText = clipboard.readText()
   if readText!= currentClipboard and readText != ''
     entryList.saveToClipboard('text')
@@ -79,4 +82,6 @@ setInterval (->
       if !readImage.isEmpty()
         entryList.saveToClipboard('image')
 
+setInterval (->
+  checkForClipboardChanges()
 ), 250

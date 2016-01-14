@@ -14,6 +14,8 @@ configPath = filePath + "config.json"
 defaultConfigPath = "default_config.json" # Overridden by config.js
 devVersion = false
 
+updateAvailable = false
+
 # Methods
 
 openLinkExternally= (url) ->
@@ -23,7 +25,6 @@ openFilePath= ->
   shell.showItemInFolder(filePath)
 
 openInFileManager= (path) ->
-  #console.log("opening " + path)
   shell.showItemInFolder(path)
 
 fileExists= (path) ->
@@ -61,3 +62,33 @@ deleteAllData= ->
     if err
       throw err
     return
+
+checkForUpdates= ->
+  request = new XMLHttpRequest
+  request.open 'GET', 'https://api.github.com/repos/Nanofus/leike/tags', true
+  request.onload = ->
+    if request.status >= 200 and request.status < 400
+      # Success!
+      data = JSON.parse(request.responseText)
+      newVersionNumber = data[0].name.substring(1) # Remove the 'v'
+      if newVersionNumber != packageJson.version
+        updateAvailable = true
+        console.log('New version available')
+      else
+        updateAvailable = false
+        console.log('No update available')
+    else
+      # We reached our target server, but it returned an error
+      console.log('Error from server when checking for updates: ' + request.status)
+    return
+  request.onerror = ->
+    # There was a connection error of some sort
+    console.log('Could not check for updates - connection error')
+    return
+  request.send()
+
+checkForUpdates()
+
+setInterval (->
+  checkForUpdates()
+), 360000

@@ -6,5 +6,5 @@ showWindow= (id) ->
 
 faq = new Vue(
   el: '#faq'
-  data: packageJson: packageJson
+  data: { packageJson: packageJson }
 )

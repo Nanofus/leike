@@ -13,6 +13,7 @@
        <div class="window-button" id="maximize" v-on:click="maximizeWindow()"></div>
        <div class="window-button" id="minimize" v-on:click="minimizeWindow()"></div>
        <div class="window-button" id="settings" v-on:click="openSettings()"></div>
+       <input type="submit" v-if="upAv == true" class="update-button" value="Update available, click here" onclick="openLinkExternally('https://github.com/Nanofus/leike/releases')">
       </div>
     </header>
     <main>
@@ -30,7 +31,7 @@
           <p>Debug enabled: <input type="checkbox" v-model="configJson.debugEnabled"></p>
           <p>Style (light, dark): <input type="text" v-model="configJson.style"></p>
           <p><input type="submit" value="Save" onclick="saveConfig()"></p>
-          <br><br><p><input type="submit" value="Export data as JSON" onclick="exportJson()"><input type="submit" value="Clear data" onclick="clearEntries()"><input type="submit" value="Open data folder" onclick="openFilePath()"><input type="submit" value="Delete all data" onclick="deleteAllData()"></p>
+          <br><br><p><input type="submit" value="Export data as JSON" onclick="exportJson()"><input type="submit" value="Clear data" onclick="clearEntries()"><input type="submit" value="Open data folder" onclick="openFilePath()"><input type="submit" value="Delete all data" onclick="deleteAllData()"><input type="submit" value="Check for updates" onclick="checkForUpdates()"></p>
         </div>
         <input type="submit" name="submit" value="Close" class="bottom-right large" onclick="showWindow('config')"/>
       </div>
