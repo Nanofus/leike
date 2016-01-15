@@ -46,8 +46,8 @@
   "dependencies": {
     "autolinker": "^0.22.0",
     "fs-extra": "^0.26.4",
-    "highlight.js": "^9.1.0",
     "path": "^0.12.7",
-    "vue": "^1.0.13"
+    "vue": "^1.0.13",
+    "yargs": "^3.31.0"
   }
 }

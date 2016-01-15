@@ -9,7 +9,6 @@ createWindow = ->
     'min-width': 560
     'min-height': 350
     'icon': 'img/icon-32px.png')
-  # and load the index.html of the app.
   mainWindow.loadURL 'file://' + __dirname + '/index.html'
   mainWindow.on 'close', ->
     position = mainWindow.getPosition()
@@ -20,17 +19,22 @@ createWindow = ->
     state.height = size[1]
     saveJson state, 'window-state'
     return
-  # Emitted when the window is closed.
   mainWindow.on 'closed', ->
-    # Dereference the window object, usually you would store windows
-    # in an array if your app supports multi windows, this is the time
-    # when you should delete the corresponding element.
     mainWindow = null
     return
   mainWindow.webContents.on 'will-navigate', (ev) ->
     ev.preventDefault()
     return
+  parseCommandLine(mainWindow)
   return
+
+# Parse command line arguments
+parseCommandLine = (mainWindow) ->
+  options = yargs(process.argv[1..]).wrap(100)
+  options.alias('d', 'debug').boolean('d').describe('d', 'Run in debug mode.')
+  args = options.argv
+  if args['debug']
+    mainWindow.webContents.openDevTools()
 
 saveJson = (data, name) ->
   path = app.getPath('documents') + '\\LeikeData\\' + name + '.json'
@@ -61,6 +65,7 @@ Menu = require('menu')
 Tray = require('tray')
 fs = require('fs-extra')
 path = require('path')
+yargs = require('yargs')
 appIcon = null
 
 state = undefined
