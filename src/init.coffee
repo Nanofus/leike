@@ -51,10 +51,13 @@ readJsonSync= (path) ->
 writeJsonSync= (data, path) ->
   fs.writeJsonSync path, data
 
-exportJson= ->
+exportJson= (autosave) ->
   time = new Date
-  path = entryList.writeData(entryList.entries, time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
-  openInFileManager(path)
+  if autosave
+    path = entryList.writeData(entryList.entries, 'autosave')
+  else
+    path = entryList.writeData(entryList.entries, time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
+    openInFileManager(path)
 
 deleteAllData= ->
   clearEntries()
@@ -86,9 +89,3 @@ checkForUpdates= ->
     console.log('Could not check for updates - connection error')
     return
   request.send()
-
-checkForUpdates()
-
-setInterval (->
-  checkForUpdates()
-), 360000

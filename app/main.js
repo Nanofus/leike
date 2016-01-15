@@ -21,7 +21,7 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 500, height: 800, frame: false, 'min-width': 300, 'min-height': 350, 'icon': 'img/icon-32px.png'});
+  mainWindow = new BrowserWindow({width: 560, height: 800, frame: false, 'min-width': 560, 'min-height': 350, 'icon': 'img/icon-32px.png'});
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
 

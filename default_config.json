@@ -1,4 +1,7 @@
 {
   "style": "light",
-  "debugEnabled": false
+  "debugEnabled": false,
+  "autosaveFrequency": 60,
+  "updateCheckFrequency": 60,
+  "aboutEnabled": true
 }

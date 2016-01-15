@@ -1,7 +1,9 @@
 setupConfig= ->
+  # Check if running from command line
   if app.getAppPath().indexOf("electron-prebuilt") > -1
     console.log("Running dev version")
     devVersion = true
+  # Set the default config file's path and create a new config if it doesn't exist
   if devVersion
     defaultConfigPath = "default_config.json"
   else
@@ -10,10 +12,18 @@ setupConfig= ->
     copyFileSync(defaultConfigPath,configPath)
 
 reloadConfig= ->
+  # Load the config file
   configJson = readJsonSync(configPath)
+  # Reload the window's css
   loadCss("build/css/" + configJson.style + ".css")
+  # Open dev tools
   if configJson.debugEnabled
     remote.getCurrentWindow().webContents.openDevTools()
+  # Hide faq button
+  if !configJson.aboutEnabled
+    document.getElementById("faq-button").style.display = "none"
+  else
+    document.getElementById("faq-button").style.display = "initial"
   # Hide loading screen
   document.getElementById("loading-window").style.display = "none"
   return
@@ -38,6 +48,7 @@ setupConfig()
 configJson = require(configPath)
 reloadConfig()
 
+# Config window
 configWindow = new Vue(
   el: '#config'
   data: {
@@ -45,3 +56,13 @@ configWindow = new Vue(
     configJson: configJson
   }
 )
+
+# Set autosave
+setInterval (->
+  exportJson(true)
+), configJson.autosaveFrequency * 1000
+
+# Set update checking
+setInterval (->
+  checkForUpdates()
+), configJson.updateCheckFrequency * 1000 * 60

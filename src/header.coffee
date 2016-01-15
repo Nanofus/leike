@@ -1,8 +1,12 @@
+# Header
 headerData = { upAv: updateAvailable }
 header = new Vue(
   el: 'header'
   data: headerData
   methods:
+
+    # The window buttons
+
     closeWindow: ->
       remote.getCurrentWindow().hide()
 
@@ -19,8 +23,8 @@ header = new Vue(
       showWindow('config')
 )
 
-# Temp solution to change update status
+# Temp solution to change different statuses
 setInterval (->
   if headerData.upAv != updateAvailable
     headerData.upAv = updateAvailable
-), 5000
+), 3000
