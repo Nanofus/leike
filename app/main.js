@@ -11,9 +11,18 @@ const clipboard = electron.clipboard;
 const Menu = require('menu');
 const Tray = require('tray');
 
+var fs = require('fs-extra');
+
 var path = require('path');
 
 var appIcon = null;
+
+var state;
+if (fileExists('window-state')) {
+  state = readJson('window-state');
+} else {
+  state = { x: 100, y: 100, width: 560, height: 800 }
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -21,9 +30,19 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 560, height: 800, frame: false, 'min-width': 560, 'min-height': 350, 'icon': 'img/icon-32px.png'});
+  mainWindow = new BrowserWindow({width: state.width, height: state.height, x: state.x, y: state.y, frame: false, 'min-width': 560, 'min-height': 350, 'icon': 'img/icon-32px.png'});
   // and load the index.html of the app.
   mainWindow.loadURL('file://' + __dirname + '/index.html');
+
+  mainWindow.on('close', function() {
+    var position = mainWindow.getPosition();
+    var size = mainWindow.getSize();
+    state.x = position[0];
+    state.y = position[1];
+    state.width = size[0];
+    state.height = size[1];
+    saveJson(state,'window-state');
+  });
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
@@ -91,3 +110,25 @@ app.on('activate', function () {
     createWindow();
   }
 });
+
+function saveJson(data,name) {
+  var path = app.getPath('documents') + '\\LeikeData\\' + name + '.json';
+  fs.writeJson(path, data, function (err) {
+    console.log(err);
+  });
+}
+
+function readJson(name) {
+  var path = app.getPath('documents') + '\\LeikeData\\' + name + '.json';
+  return fs.readJsonSync(path, {throws: false})
+}
+
+function fileExists(name) {
+  var path = app.getPath('documents') + '\\LeikeData\\' + name + '.json';
+  try {
+    fs.statSync(path);
+  } catch (err) {
+    return false;
+  }
+  return true;
+}

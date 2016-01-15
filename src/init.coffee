@@ -7,7 +7,7 @@ app = remote.require('electron').app;
 packageJson = require('../package.json')
 
 # Other values
-filePath = app.getPath('home') + '\\LeikeData\\'
+filePath = app.getPath('documents') + '\\LeikeData\\'
 imagePath = filePath + "images\\"
 textPath = filePath + "data\\"
 configPath = filePath + "config.json"
