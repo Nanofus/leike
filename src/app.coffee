@@ -1,4 +1,8 @@
-currentClipboard = clipboard.readImage().toJpeg(0).toString()
+comparationImage= (image) ->
+  return image.toJpeg(0).toString()
+
+currentClipboard = comparationImage(clipboard.readImage())
+copiedImage = null
 
 clearEntries= ->
   entryList.entries = new Array
@@ -52,7 +56,7 @@ entryList = new Vue(
           content: path
           type: 'image'
           timestamp: time
-        currentClipboard = clipboard.readImage().toJpeg(0).toString()
+        currentClipboard = comparationImage(clipboard.readImage())
         #console.log("Data is an image! - " + clipboardData);
         @entries.unshift clipboardData
 
@@ -62,7 +66,7 @@ entryList = new Vue(
       if entry.type == 'image'
         img = nativeImage.createFromPath(entry.content)
         clipboard.writeImage(img)
-        currentClipboard = img.toJpeg(0).toString()
+        copiedImage = comparationImage(img)
 
     deleteEntry: (entry) ->
       #console.log("deleting " + entry)
@@ -78,14 +82,17 @@ entryList = new Vue(
 
 checkForClipboardChanges= ->
   readText = clipboard.readText()
-  if readText!= currentClipboard and readText != ''
-    entryList.saveToClipboard('text')
+  if readText != ''
+    if readText!= currentClipboard
+      entryList.saveToClipboard('text')
   else
     readImage = clipboard.readImage()
-    if readImage.toJpeg(0).toString() != currentClipboard
-      if !readImage.isEmpty()
-        entryList.saveToClipboard('image')
+    compImage = comparationImage(readImage)
+    if compImage != currentClipboard
+      if compImage != copiedImage
+        if !readImage.isEmpty()
+          entryList.saveToClipboard('image')
 
 setInterval (->
   checkForClipboardChanges()
-), 250
+), 500
