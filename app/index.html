@@ -19,7 +19,7 @@
     <main>
       <div id="faq" class="window">
         <h2>Hello there!</h2>
-        <p>This here is {{packageJson.name}}, an open-source clipboard utility developed and maintained by {{packageJson.author}}, written in CoffeeScript & SASS, using Electron & Vue.js.</p>
+        <p>This here is {{packageJson.name}}, an open-source clipboard utility developed and maintained by {{packageJson.author}}, written in CoffeeScript, HTML & SASS, using Electron & Vue.js.</p>
         <p>The app logs all text and images entering the clipboard into memory and saves the images into a <a href="#" onclick="openFilePath()">folder</a>. If an image is deleted from the list, the file is deleted as well.</p>
         <p>The app keeps running in the background and can be closed from the tray icon.</p>
         <p>More info at the <a href="#" onclick="openLinkExternally('http://github.com/Nanofus/leike')">GitHub repository</a>.</p>
@@ -29,7 +29,7 @@
       <div id="config" class="window">
         <div class="settings">
           <h2>Settings</h2>
-          <p>Style (light, dark): <input type="text" v-model="configJson.style"></p>
+          <p>Style (light, gray, dark): <input type="text" v-model="configJson.style"></p>
           <p>Autosave frequency (seconds): <input type="text" v-model="configJson.autosaveFrequency"></p>
           <p>Update check frequency (minutes): <input type="text" v-model="configJson.updateCheckFrequency"></p>
           <p>Debug enabled: <input type="checkbox" v-model="configJson.debugEnabled"></p>

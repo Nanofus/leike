@@ -1,0 +1,23 @@
+// THEME FILE //
+// Edit the color values & run a SASS compiler to get a complete stylesheet
+
+$background-color: #303841;
+$area-color: #3A4750;
+$text-color: #EEEEEE;
+$highlight-color: #00ADB5;
+$button-color: $area-color;
+$button-highlight-color: #00ADB5;
+$link-color: #00ADB5;
+$link-hover-color: lighten($link-color,20%);
+$content-color: #3A4750;
+$scrollbar-color: $background-color;
+$scrollbar-handle-color: darken($background-color,10%);
+$scrollbar-border-color: darken($scrollbar-handle-color,10%);
+$timestamp-color: lighten($background-color,30%);
+$header-color: $area-color;
+$header-button-normal: $area-color;
+$header-button-hover: lighten($area-color,10%);
+$header-button-close: $area-color;
+$header-button-close-hover: $button-highlight-color;
+
+@import 'main'
