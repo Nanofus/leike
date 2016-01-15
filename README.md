@@ -12,10 +12,8 @@ The application can be quit by right-clicking the tray icon.
 
 ## Upcoming features
 
-* Autosave
-* Changeable data folder location
-* Automatic updates
 * Image resizing & log improvements to limit memory usage
+* Changeable data folder location
 * Optional sound effects
 * Bugfixes for Linux version
 * OSX version
