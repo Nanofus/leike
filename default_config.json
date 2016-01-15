@@ -3,5 +3,7 @@
   "debugEnabled": false,
   "autosaveFrequency": 60,
   "updateCheckFrequency": 60,
-  "aboutEnabled": true
+  "aboutEnabled": true,
+  "audioEnabled": false,
+  "audioVolume": 50
 }

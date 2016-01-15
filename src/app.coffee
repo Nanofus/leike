@@ -48,6 +48,7 @@ entryList = new Vue(
           #console.log(clipboardData)
           currentClipboard = clipboard.readText()
           @entries.unshift clipboardData
+          playCopyTo()
         else
           currentClipboard = clipboard.readText()
       else if type == 'image'
@@ -59,14 +60,17 @@ entryList = new Vue(
         currentClipboard = comparationImage(clipboard.readImage())
         #console.log("Data is an image! - " + clipboardData);
         @entries.unshift clipboardData
+        playCopyTo()
 
     copyEntry: (entry) ->
       if entry.type == 'text'
         clipboard.writeText(entry.content)
+        playCopyFrom()
       if entry.type == 'image'
         img = nativeImage.createFromPath(entry.content)
         clipboard.writeImage(img)
         copiedImage = comparationImage(img)
+        playCopyFrom()
 
     deleteEntry: (entry) ->
       #console.log("deleting " + entry)

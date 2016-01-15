@@ -32,6 +32,8 @@
           <p>Style (light, gray, dark): <input type="text" v-model="configJson.style"></p>
           <p>Autosave frequency (seconds): <input type="text" v-model="configJson.autosaveFrequency"></p>
           <p>Update check frequency (minutes): <input type="text" v-model="configJson.updateCheckFrequency"></p>
+          <p>Audio enabled: <input type="checkbox" v-model="configJson.audioEnabled"></p>
+          <p>Audio volume: <input type="range" min="0" max="100" v-model="configJson.audioVolume"></p>
           <p>Debug enabled: <input type="checkbox" v-model="configJson.debugEnabled"></p>
           <p>? button enabled: <input type="checkbox" v-model="configJson.aboutEnabled"></p>
           <br><p><input type="submit" value="Save" onclick="saveConfig()"></p>
@@ -69,6 +71,7 @@
     <script type="text/javascript" src="../node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/init.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/config.js" charset="utf-8"></script>
+    <script type="text/javascript" src="build/audio.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/app.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/autolinker.js" charset="utf-8"></script>
     <script type="text/javascript" src="build/windows.js" charset="utf-8"></script>
