@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Leike by Nanofus</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Leike</h1>
+        <p>A clipboard management utility</p>
+
+        <p class="view"><a href="https://github.com/Nanofus/leike">View the Project on GitHub <small>Nanofus/leike</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/Nanofus/leike/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Nanofus/leike/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Nanofus/leike">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="-leike" class="anchor" href="#-leike" aria-hidden="true"><span class="octicon octicon-link"></span></a><img src="https://raw.githubusercontent.com/Nanofus/leike/master/app/img/icon-32px.png" alt="Leike" title="Leike"> Leike</h1>
+
+<p><a href="https://david-dm.org/Nanofus/leike"><img src="https://david-dm.org/Nanofus/leike.svg" alt="Dependency Status"></a> <a href="https://david-dm.org/Nanofus/leike#info=devDependencies"><img src="https://david-dm.org/Nanofus/leike/dev-status.svg" alt="devDependency Status"></a>
+<a href=""><img src="https://img.shields.io/github/downloads/Nanofus/leike/total.svg" alt="Github All Releases"></a> <a href=""><img src="https://img.shields.io/github/release/Nanofus/leike.svg" alt="GitHub release"></a></p>
+
+<p>A clipboard management utility, using <a href="https://github.com/atom/electron">Electron</a> &amp; <a href="https://github.com/vuejs/vue">Vue.js</a>. Written in <a href="https://github.com/jashkenas/coffeescript">CoffeeScript</a>, HTML &amp; <a href="https://github.com/sass/sass">SASS</a>. Works on Windows and Ubuntu, untested on OSX and other flavors of Linux.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<p>The application runs in the background and records all text and images that enter the clipboard. The text is saved into memory and images copied into a backup folder. The user can view their clipboard log via the main window.</p>
+
+<p>The application can be quit by right-clicking the tray icon.</p>
+
+<h2>
+<a id="upcoming-features" class="anchor" href="#upcoming-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Upcoming features</h2>
+
+<ul>
+<li>Image resizing &amp; log improvements to limit memory usage</li>
+<li>Changeable data folder location</li>
+<li>Optional sound effects</li>
+<li>Bugfixes for Linux version</li>
+<li>OSX version</li>
+</ul>
+
+<h2>
+<a id="downloads" class="anchor" href="#downloads" aria-hidden="true"><span class="octicon octicon-link"></span></a>Downloads</h2>
+
+<p>The latest build is available on the <a href="https://github.com/Nanofus/leike/releases/latest">releases</a> page.</p>
+
+<h2>
+<a id="building" class="anchor" href="#building" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building</h2>
+
+<p>Running dev version:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Install dependencies</span>
+npm install
+
+<span class="pl-c"># Compile SASS &amp; CoffeeScript using Gulp</span>
+gulp
+
+<span class="pl-c"># Run</span>
+npm start</pre></div>
+
+<p>Building dist version:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Install dependencies</span>
+npm install
+
+<span class="pl-c"># Build standalone Windows and Linux apps into ./dist</span>
+npm run build</pre></div>
+
+<p>Other configured scripts:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Clean compiled stylesheets &amp; scripts</span>
+gulp clean
+
+<span class="pl-c"># Clean compiled dist versions</span>
+npm run clean
+
+<span class="pl-c"># Watch for changes in stylesheets &amp; scripts</span>
+gulp watch</pre></div>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Nanofus">Nanofus</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
