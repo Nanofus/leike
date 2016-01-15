@@ -9,3 +9,4 @@ npm-debug.log
 /cache/
 /dist/
 /builds/
+/app/main.js
