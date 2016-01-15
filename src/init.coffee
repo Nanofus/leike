@@ -1,6 +1,7 @@
 # Requirements
 remote = require('remote')
 clipboard = remote.require('clipboard')
+nativeImage = remote.require('electron').nativeImage
 fs = remote.require('fs-extra')
 shell = remote.require('shell')
 app = remote.require('electron').app;

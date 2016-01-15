@@ -59,6 +59,10 @@ entryList = new Vue(
     copyEntry: (entry) ->
       if entry.type == 'text'
         clipboard.writeText(entry.content)
+      if entry.type == 'image'
+        img = nativeImage.createFromPath(entry.content)
+        clipboard.writeImage(img)
+        currentClipboard = img.toJpeg(0).toString()
 
     deleteEntry: (entry) ->
       #console.log("deleting " + entry)

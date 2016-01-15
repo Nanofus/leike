@@ -25,10 +25,6 @@
     "type": "git",
     "url": "git+https://github.com/Nanofus/leike.git"
   },
-  "keywords": [
-    "clipboard",
-    "manager"
-  ],
   "bugs": {
     "url": "https://github.com/Nanofus/leike/issues"
   },
