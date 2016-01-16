@@ -47,6 +47,7 @@ loadCss= (url) ->
 setupConfig()
 configJson = require(configPath)
 reloadConfig()
+checkForUpdates()
 
 # Config window
 configWindow = new Vue(

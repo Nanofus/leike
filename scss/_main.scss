@@ -146,8 +146,9 @@ input[type="submit"]{
   }
   &.update-button {
     float:right;
+    -webkit-app-region: no-drag;
     background-color: $background-color;
-    z-index: 1000;
+    z-index: 2000;
   }
 }
 
