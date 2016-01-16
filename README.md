@@ -12,10 +12,9 @@ The application can be quit by right-clicking the tray icon.
 
 ## Upcoming features
 
-* Image resizing & log improvements to limit memory usage
 * Changeable data folder location
-* Optional sound effects
 * Bugfixes for Linux version
+* Optimizations to limit CPU usage when handling images
 * OSX version
 
 ## Downloads
