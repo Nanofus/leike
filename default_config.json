@@ -5,5 +5,6 @@
   "updateCheckFrequency": 60,
   "aboutEnabled": true,
   "audioEnabled": false,
-  "audioVolume": 50
+  "audioVolume": 50,
+  "useSelection": false
 }
