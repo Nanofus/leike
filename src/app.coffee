@@ -1,7 +1,10 @@
 comparationImage= (image) ->
   return image.toJpeg(0).toString()
 
-currentClipboard = comparationImage(clipboard.readImage())
+selection = null
+if configJson.useSelection
+      selection = 'selection'
+currentClipboard = comparationImage(clipboard.readImage(selection))
 copiedImage = null
 
 clearEntries= ->
@@ -41,34 +44,34 @@ entryList = new Vue(
       if type == 'text'
         if !remote.getCurrentWindow().isFocused()
           clipboardData =
-            content: clipboard.readText()
+            content: clipboard.readText(selection)
             type: 'text'
             timestamp: time
           #console.log("Data is text!")
           #console.log(clipboardData)
-          currentClipboard = clipboard.readText()
+          currentClipboard = clipboard.readText(selection)
           @entries.unshift clipboardData
           playCopyTo()
         else
-          currentClipboard = clipboard.readText()
+          currentClipboard = clipboard.readText(selection)
       else if type == 'image'
-        path = @writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds())
+        path = @writeImage(clipboard.readImage().toPng(), time.getFullYear() + '-' + time.getMonth() + 1 + '-' + time.getDate() + ' ' + time.getHours() + '-' + time.getMinutes() + '-' + time.getSeconds() + '-' + time.getMilliseconds(selection))
         clipboardData =
           content: path
           type: 'image'
           timestamp: time
-        currentClipboard = comparationImage(clipboard.readImage())
+        currentClipboard = comparationImage(clipboard.readImage(selection))
         #console.log("Data is an image! - " + clipboardData);
         @entries.unshift clipboardData
         playCopyTo()
 
     copyEntry: (entry) ->
       if entry.type == 'text'
-        clipboard.writeText(entry.content)
+        clipboard.writeText(selectionentry.content)
         playCopyFrom()
       if entry.type == 'image'
         img = nativeImage.createFromPath(entry.content)
-        clipboard.writeImage(img)
+        clipboard.writeImage(selectionimg)
         copiedImage = comparationImage(img)
         playCopyFrom()
 
@@ -85,12 +88,12 @@ entryList = new Vue(
 )
 
 checkForClipboardChanges= ->
-  readText = clipboard.readText()
+  readText = clipboard.readText(selection)
   if readText != ''
     if readText!= currentClipboard
       entryList.saveToClipboard('text')
   else
-    readImage = clipboard.readImage()
+    readImage = clipboard.readImage(selection)
     compImage = comparationImage(readImage)
     if compImage != currentClipboard
       if compImage != copiedImage

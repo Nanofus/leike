@@ -36,6 +36,7 @@
           <p>Audio volume: <input type="range" min="0" max="100" v-model="configJson.audioVolume"></p>
           <p>Debug enabled: <input type="checkbox" v-model="configJson.debugEnabled"></p>
           <p>? button enabled: <input type="checkbox" v-model="configJson.aboutEnabled"></p>
+          <p>Use selection on Linux: <input type="checkbox" v-model="configJson.useSelection"></p>
           <br><p><input type="submit" value="Save" onclick="saveConfig()"></p>
           <br><br><p>You have to restart the app to refresh the frequencies.</p>
           <br><p><input type="submit" value="Export data as JSON" onclick="exportJson(false)"><input type="submit" value="Clear data" onclick="clearEntries()"><input type="submit" value="Open data folder" onclick="openFilePath()"><input type="submit" value="Delete all data" onclick="deleteAllData()"><input type="submit" value="Check for updates" onclick="checkForUpdates()"></p>
