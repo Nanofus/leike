@@ -18,7 +18,7 @@ A clipboard management utility, using [Electron](https://github.com/atom/electro
 
 The application can be quit by right-clicking the tray icon.
 
-## Upcoming features
+## Planned features
 
 * Changeable data folder location
 * Bugfixes for Linux version
